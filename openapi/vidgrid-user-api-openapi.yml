@@ -1,0 +1,202 @@
+openapi: 3.0.0
+info:
+  title: VidGrid API Reference Caption User API
+  description: Welcome to the VidGrid [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API!<br/><br/>You can use this API to create and manage resources on your VidGrid account. The API is meant to be used server-side and all requests should be made over SSL.<br/><br/>Code examples can be viewed in the area to the right, and you can switch the language of the examples with the tabs in the top right.
+  termsOfService: https://www.vidgrid.com/terms/
+  contact:
+    name: API Support
+    url: https://help.vidgrid.com
+    email: videoengineering@paylocity.com?subject=API Inquiry
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: '2.0'
+servers:
+- url: https://api.vidgrid.com/ContentManagement
+security:
+- bearer: []
+  basic: []
+tags:
+- name: User
+  description: The User API allows you to interact with users on your VidGrid account.
+  externalDocs:
+    description: More
+    url: https://developer.vidgrid.com/docs/v2/#user-api
+paths:
+  /vidgrid/v2/users/{identifier}:
+    get:
+      tags:
+      - User
+      summary: Retrieve user
+      description: This endpoint returns an array of User Resources.
+      parameters:
+      - name: identifier
+        in: path
+        description: ID of user to return
+        required: false
+        schema:
+          type: string
+      - name: identifiers[]
+        in: query
+        description: The unique identifiers of the desired users. When set, this takes priority over **identifier**.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UserResource'
+                type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags:
+      - User
+      summary: Delete user
+      description: This endpoint deletes a user.
+      parameters:
+      - name: identifier
+        in: path
+        description: ID of user to delete
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                transfer_videos_to:
+                  description: 'Specifies whether to transfer this user''s videos to another user, the organization''s guest user, or to delete them permanently. Possible values: `{user_identifier}`, `ORGANIZATION`, `DELETE`'
+                  type: string
+                transfer_shared_folders_to:
+                  description: 'Specifies whether to transfer this user''s shared folders to another user or to delete them permanently.Possible values: `{user_identifier}`, `DELETE`'
+                  type: string
+              type: object
+      responses:
+        '204':
+          $ref: '#/components/responses/NoContent'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  responses:
+    NoContent:
+      description: No Content
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    ValidationError:
+      description: Validation Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+  schemas:
+    UserResource:
+      title: User Resource
+      description: The User Resource(s) returned in a successful response.
+      required:
+      - identifier
+      - email
+      - name
+      properties:
+        identifier:
+          description: The unique identifier for the user.
+          type: string
+        email:
+          description: The user's email.
+          type: string
+        name:
+          description: The user's name.
+          type: string
+      type: object
+  securitySchemes:
+    bearer:
+      description: Bearer Authorization
+      in: header
+      name: bearer
+      scheme: bearer
+      type: http
+    basic:
+      description: Where `username` and `password` are api `key` and `secret`
+      in: header
+      name: basic
+      scheme: basic
+      type: http
+externalDocs:
+  description: Full API Documentation
+  url: https://developer.vidgrid.com

@@ -1,0 +1,307 @@
+openapi: 3.0.0
+info:
+  title: VidGrid API Reference Caption Folder API
+  description: Welcome to the VidGrid [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API!<br/><br/>You can use this API to create and manage resources on your VidGrid account. The API is meant to be used server-side and all requests should be made over SSL.<br/><br/>Code examples can be viewed in the area to the right, and you can switch the language of the examples with the tabs in the top right.
+  termsOfService: https://www.vidgrid.com/terms/
+  contact:
+    name: API Support
+    url: https://help.vidgrid.com
+    email: videoengineering@paylocity.com?subject=API Inquiry
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: '2.0'
+servers:
+- url: https://api.vidgrid.com/ContentManagement
+security:
+- bearer: []
+  basic: []
+tags:
+- name: Folder
+  description: The Folder API allows you to interact with folders on your VidGrid account.
+  externalDocs:
+    description: More
+    url: https://developer.vidgrid.com/docs/v2/#folder-api
+paths:
+  /vidgrid/v2/folders/{identifier}:
+    get:
+      tags:
+      - Folder
+      summary: Retrieve folder
+      description: This endpoint returns an array of Folder Resources.
+      parameters:
+      - name: identifier
+        in: path
+        description: ID of folder to return
+        required: false
+        schema:
+          type: string
+      - name: identifiers[]
+        in: query
+        description: The unique identifiers of the desired folders. When set, this takes priority over **identifier**.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: include[]
+        in: query
+        description: An array of properties to be included with the returned Folder Resources.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - playlist
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FolderResource'
+                type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags:
+      - Folder
+      summary: Delete folder
+      description: This endpoint deletes a folder.
+      parameters:
+      - name: identifier
+        in: path
+        description: ID of folder to delete
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          $ref: '#/components/responses/NoContent'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      tags:
+      - Folder
+      summary: Update folder
+      description: This endpoint updates a folder and then returns it as a Folder Resource.
+      parameters:
+      - name: identifier
+        in: path
+        description: ID of folder to update
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                properties:
+                  properties:
+                    title:
+                      description: Updates the folder title.
+                      type: string
+                  type: object
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/FolderResource'
+                type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /vidgrid/v2/folders:
+    post:
+      tags:
+      - Folder
+      summary: Create folder
+      description: This endpoint creates a folder and then returns it as a Folder Resource.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                title:
+                  description: Sets the folder title.
+                  type: string
+                is_in_org_library:
+                  description: Whether or not to place this folder into the Organization Library.
+                  type: boolean
+                  default: false
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/FolderResource'
+                type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  responses:
+    NoContent:
+      description: No Content
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    ValidationError:
+      description: Validation Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+  schemas:
+    FolderPlaylist:
+      description: Class ApiFolderPropertyPlaylistService
+      properties:
+        enabled:
+          description: Whether or not this folder is in the Organization Library.
+          type: boolean
+        view_url:
+          description: URL to view the playlist for this folder.
+          type: string
+          format: URL
+        embed_url:
+          description: URL to embed the playlist for this folder.
+          type: string
+          format: URL
+      type: object
+    FolderResource:
+      title: Folder Resource
+      description: The Folder Resource(s) returned in a successful response.
+      required:
+      - identifier
+      - title
+      - view_url
+      - is_in_org_library
+      properties:
+        identifier:
+          description: The unique identifier for the folder.
+          type: string
+        title:
+          description: Title of the folder.
+          type: string
+        is_in_org_library:
+          description: Whether or not this folder is in the Organization Library.
+          type: boolean
+        view_url:
+          description: URL to view the folder.
+          type: string
+          format: URL
+        playlist:
+          $ref: '#/components/schemas/FolderPlaylist'
+      type: object
+  securitySchemes:
+    bearer:
+      description: Bearer Authorization
+      in: header
+      name: bearer
+      scheme: bearer
+      type: http
+    basic:
+      description: Where `username` and `password` are api `key` and `secret`
+      in: header
+      name: basic
+      scheme: basic
+      type: http
+externalDocs:
+  description: Full API Documentation
+  url: https://developer.vidgrid.com

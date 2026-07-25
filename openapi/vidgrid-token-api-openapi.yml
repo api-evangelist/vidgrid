@@ -1,0 +1,300 @@
+openapi: 3.0.0
+info:
+  title: VidGrid API Reference Caption Token API
+  description: Welcome to the VidGrid [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API!<br/><br/>You can use this API to create and manage resources on your VidGrid account. The API is meant to be used server-side and all requests should be made over SSL.<br/><br/>Code examples can be viewed in the area to the right, and you can switch the language of the examples with the tabs in the top right.
+  termsOfService: https://www.vidgrid.com/terms/
+  contact:
+    name: API Support
+    url: https://help.vidgrid.com
+    email: videoengineering@paylocity.com?subject=API Inquiry
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: '2.0'
+servers:
+- url: https://api.vidgrid.com/ContentManagement
+security:
+- bearer: []
+  basic: []
+tags:
+- name: Token
+  description: The Video Creation Token API allows you to request a token that can be used to record or upload videos into your VidGrid account.
+  externalDocs:
+    description: More
+    url: https://developer.vidgrid.com/docs/v2/#video-creation-token-api
+paths:
+  /vidgrid/v2/tokens:
+    post:
+      tags:
+      - Token
+      summary: Create token
+      description: This endpoint generates and returns a Token Resource that can be used for creating videos.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                type:
+                  description: 'The type of token that will be used. See Token Types for more info. Possible values: `record`, `upload`, `direct_upload`.'
+                  type: string
+                video:
+                  description: Sets properties on videos created with this token.
+                  properties:
+                    title:
+                      description: Sets the title for the created video. If `recorder.hide_video_title` is set to `false` the end user will have the option to set their own title from within the recorder.
+                      type: string
+                    public:
+                      description: When set to `true`, an uploaded video will be viewable by anyone with a link. If set to `false`, a user must be logged in to your VidGrid account to view the video. If not set, your user or organization default settings will be used.
+                      type: boolean
+                    folder:
+                      description: Automatically add uploaded videos to a folder. This should be set to a folder **identifier**.
+                      type: string
+                  type: object
+                recorder:
+                  description: Configures recorder behavior when launched via a specific token.
+                  properties:
+                    auto_show_video_page:
+                      description: Whether or not to automatically open the video in the user's browser after recording.
+                      type: boolean
+                      default: false
+                    auto_close_recorder:
+                      description: Whether or not to close the recorder when it is finished uploading the video. If set to `true`, the user will only be able to record one video with this token.
+                      type: boolean
+                      default: false
+                    hide_video_title_input:
+                      description: Whether or not to allow the user to title the video after recording.
+                      type: boolean
+                      default: false
+                    default_fullscreen:
+                      description: Whether or not the recorder should launch in fullscreen mode.
+                      type: boolean
+                      default: false
+                    force_webcam_only:
+                      description: Whether or not the recorder should be restricted to webcam only mode.
+                      type: boolean
+                      default: false
+                    on_install:
+                      properties:
+                        auto_authenticate:
+                          description: Whether or not a user should be automatically authenticated the first time the recorder is launched after install. If set to `false`, the user will need to return to their browser and click record in order to be authenticated.
+                          type: boolean
+                          default: true
+                        show_instructions_page:
+                          description: Whether or not to download the recorder without redirecting to the install recorder page. This happens the first time a use clicks record when using the iframe method.
+                          type: boolean
+                          default: false
+                      type: object
+                  type: object
+                webhook_extras:
+                  description: Any extra data that you would like to be sent along when Webhook events are fired.
+                  type: array
+                  items: {}
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    oneOf:
+                    - $ref: '#/components/schemas/RecordTokenResource'
+                    - $ref: '#/components/schemas/UploadTokenResource'
+                    - $ref: '#/components/schemas/DirectUploadTokenResource'
+                type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  responses:
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    ValidationError:
+      description: Validation Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+  schemas:
+    RecordTokenResource:
+      title: Record Token Resource
+      description: The Record Token Resource returned in a successful response.
+      required:
+      - token
+      - token_key
+      - expires
+      - recorder
+      properties:
+        token:
+          description: One-time token that is used for authentication when recording and uploading a video.
+          type: string
+        token_key:
+          description: Public identifier corresponding to the token.
+          type: string
+        expires:
+          description: UNIX Timestamp (UTC) indicating when the temporary token will expire.
+          type: string
+          format: timestamp
+        recorder:
+          properties:
+            download_url:
+              description: URL that can be used to download the recorder.
+              type: string
+              format: URL
+            launch_uri:
+              description: URI that can be used to launch the recorder.
+              type: string
+              format: URI
+            iframe_button:
+              description: Iframe containing a record button. It will handle downloading and launching the recorder.
+              type: string
+          type: object
+      type: object
+    UploadTokenResource:
+      title: Upload Token Resource
+      description: The Upload Token Resource returned in a successful response.
+      required:
+      - token
+      - token_key
+      - expires
+      - uploader
+      properties:
+        token:
+          description: One-time token that is used for authentication when uploading a video.
+          type: string
+        token_key:
+          description: Public identifier corresponding to the token.
+          type: string
+        expires:
+          description: UNIX Timestamp (UTC) indicating when the temporary token will expire.
+          type: string
+          format: timestamp
+        uploader:
+          properties:
+            iframe:
+              description: Iframe containing a simple upload dropzone.
+              type: string
+            iframe_basic:
+              description: Iframe containing a simple upload button.
+              type: string
+          type: object
+      type: object
+    DirectUploadTokenResource:
+      title: Direct Upload Token Resource
+      description: The Direct Upload Token Resource returned in a successful response.
+      required:
+      - token
+      - token_key
+      - expires
+      - uploader
+      properties:
+        token:
+          description: One-time token that is used for authentication when uploading a video. It is then mainly used for informational purposes.
+          type: string
+        token_key:
+          description: Public identifier corresponding to the token.
+          type: string
+        formAttributes:
+          description: Form attributes necessary for the S3 upload.
+          properties:
+            action:
+              type: string
+            method:
+              type: string
+            enctype:
+              type: string
+          type: object
+        formInputs:
+          description: 'Key/value pairs necessary for the S3 upload. <i>Important: **formInputs.key** contains a **${filename}** string that needs to be replaced with a unique file name for each file uploaded. This will also be used for the video title in VidGrid unless `video.title` is set in the Create Token request.</i>'
+          properties:
+            key:
+              type: string
+            acl:
+              type: string
+            x-amz-server-side-encryption:
+              type: string
+            X-Amz-Credential:
+              type: string
+            X-Amz-Algorithm:
+              type: string
+            X-Amz-Date:
+              type: string
+            X-Amz-Signature:
+              type: string
+            Policy:
+              type: string
+          type: object
+        fileParamName:
+          description: 'The required key name that should contain the file data for uploading. <i>Important: Amazon requires this to be the last key/value pair included in the POST to S3.</i>'
+          type: string
+        cloudUploadCallbackUrl:
+          description: 'URL to `POST` to once a video has finished uploading to S3 and is ready for processing. Returns a video identifier. <i>Important: you need to include `cloudKey` with the request which is the value of `formInputs.key` after **${filename}** has been replaced.</i>'
+          type: string
+      type: object
+  securitySchemes:
+    bearer:
+      description: Bearer Authorization
+      in: header
+      name: bearer
+      scheme: bearer
+      type: http
+    basic:
+      description: Where `username` and `password` are api `key` and `secret`
+      in: header
+      name: basic
+      scheme: basic
+      type: http
+externalDocs:
+  description: Full API Documentation
+  url: https://developer.vidgrid.com

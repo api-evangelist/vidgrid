@@ -1,0 +1,389 @@
+openapi: 3.0.0
+info:
+  title: VidGrid API Reference Caption Search API
+  description: Welcome to the VidGrid [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API!<br/><br/>You can use this API to create and manage resources on your VidGrid account. The API is meant to be used server-side and all requests should be made over SSL.<br/><br/>Code examples can be viewed in the area to the right, and you can switch the language of the examples with the tabs in the top right.
+  termsOfService: https://www.vidgrid.com/terms/
+  contact:
+    name: API Support
+    url: https://help.vidgrid.com
+    email: videoengineering@paylocity.com?subject=API Inquiry
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: '2.0'
+servers:
+- url: https://api.vidgrid.com/ContentManagement
+security:
+- bearer: []
+  basic: []
+tags:
+- name: Search
+  description: The Search API allows you to search for videos.
+paths:
+  /vidgrid/v2/search/{resource}:
+    get:
+      tags:
+      - Search
+      summary: Search videos
+      description: This endpoint returns a list of videos by page.
+      parameters:
+      - name: resource
+        in: path
+        description: Resource to search for
+        required: true
+        schema:
+          type: string
+          example: videos
+      - name: page
+        in: query
+        description: Page number to return
+        required: true
+        schema:
+          type: number
+          format: int32
+          example: '1'
+      - name: filter[]
+        in: query
+        description: Filter to use
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - mine
+            - ready
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  current_page:
+                    type: number
+                    format: int32
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VideoResource'
+                  first_page_url:
+                    type: string
+                    format: URL
+                  from:
+                    type: number
+                    format: int32
+                  last_page:
+                    type: number
+                    format: int32
+                  last_page_url:
+                    type: string
+                    format: URL
+                  links:
+                    type: array
+                    items:
+                      properties:
+                        url:
+                          type: string
+                          format: URL
+                        label:
+                          type: string
+                        active:
+                          type: boolean
+                      type: object
+                  next_page_url:
+                    type: string
+                    format: URL
+                  path:
+                    type: string
+                    format: URL
+                  per_page:
+                    type: number
+                    format: int32
+                  prev_page_url:
+                    type: string
+                    format: URL
+                  to:
+                    type: number
+                    format: int32
+                  total:
+                    type: number
+                    format: int32
+                type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  schemas:
+    VideoThumbnails:
+      description: Signed URLs that can be used to view video thumbnails.
+      properties:
+        signed_url:
+          description: Signed URL for the video thumbnail.
+          type: string
+          format: URL
+        signed_url_small:
+          description: Signed URL for a smaller version of the video thumbnail.
+          type: string
+          format: URL
+      type: object
+    VideoTokenKey:
+      description: Public identifier corresponding to the Token Resource used when creating a video through the API.
+      type: string
+    VideoCaptions:
+      description: Caption Resources attached to this video.
+      type: array
+      items:
+        $ref: '#/components/schemas/CaptionResource'
+    VideoPcty:
+      description: Pcty reference data
+      properties:
+        pcty_owner:
+          description: Paylocity owner information
+          type: array
+          items:
+            properties:
+              pcty_id:
+                type: string
+              pcty_co:
+                type: string
+            type: object
+        pcty_environment:
+          description: Paylocity envinronment
+          type: string
+        pcty_video_references:
+          description: Paylocity video references. To know if a video has been uploaded or inserted somewhere
+          type: array
+          items:
+            properties:
+              pcty_product:
+                type: string
+              pcty_type:
+                type: string
+              created_at:
+                type: string
+            type: object
+      type: object
+    VideoMetadata:
+      description: Metadata describing a video.
+      properties:
+        duration:
+          description: Duration of the video in seconds.
+          type: number
+          format: float
+        filesize:
+          description: Size of the video in bytes. Filesize may differ between videos uploaded and videos done processing.
+          type: integer
+        filetype:
+          description: File type of the video file.
+          type: string
+        height:
+          description: Height of the video. Height may differ between videos uploaded and videos done  processing.
+          type: integer
+        width:
+          description: 'Width of the video. Width may differ between videos uploaded and videos done processing. '
+          type: integer
+      type: object
+    CaptionResource:
+      title: Caption Resource
+      description: The Caption Resource(s) returned in a successful response.
+      required:
+      - identifier
+      - type
+      - status
+      - video_identifier
+      - language
+      properties:
+        identifier:
+          description: The unique identifier for the caption on VidGrid.
+          type: string
+        language:
+          description: The language of the caption file.
+          type: string
+        status:
+          description: 'The current status of this caption resource. Possible values: `QUEUED`, `PENDING`, `IN_PROGRESS`, `CANCELED`, `FAILED`, `COMPLETED`'
+          type: string
+        type:
+          description: 'The type of caption resource. Possible values: `machine`, `professional`, `manual`, `machine_translation`'
+          type: string
+        video_identifier:
+          description: The unique identifier of the video this caption belongs to.
+          type: string
+        transcript:
+          $ref: '#/components/schemas/CaptionTranscript'
+      type: object
+    VideoSummary:
+      description: A summary of analytics on a video
+      required:
+      - plays
+      properties:
+        plays:
+          description: Grants view permissions
+          type: number
+      type: object
+    VideoSignedUrl:
+      description: Signed URL that can be used to view the video file directly. Expires after 6 hours.
+      type: string
+      format: URL
+    VideoJwts:
+      description: 'A single-use access token that can be used to grant permissions for a video on VidGrid. On page load a new access token will be generated that allows the user to access the video for 6 hours, but the token in the URL will have expired. You can use the token with view or embed URLs as follows: `{embed_url}?auth={jwts.token_type}`'
+      required:
+      - view
+      - edit
+      properties:
+        view:
+          description: Grants view permissions
+          type: string
+        edit:
+          description: Grants edit permissions
+          type: string
+        manage:
+          description: Grants manage permissions
+          type: string
+      type: object
+    VideoResource:
+      title: Video Resource
+      description: The Video Resource(s) returned in a successful response.
+      required:
+      - identifier
+      - title
+      - view_url
+      - embed_url
+      - view_permissions
+      properties:
+        identifier:
+          description: The unique identifier for the video.
+          type: string
+        title:
+          description: Title of the video.
+          type: string
+        view_url:
+          description: URL to view the video.
+          type: string
+          format: url
+        embed_url:
+          description: URL to embed the video.
+          type: string
+          format: url
+        view_permissions:
+          description: 'Video view permissions: visible to anyone with a link (PUBLIC), requires a login to view (TEAM), or private to the owner and admins (ONLY_ME).'
+          type: string
+        signed_url:
+          $ref: '#/components/schemas/VideoSignedUrl'
+        metadata:
+          $ref: '#/components/schemas/VideoMetadata'
+        thumbnail:
+          $ref: '#/components/schemas/VideoThumbnails'
+        jwt:
+          $ref: '#/components/schemas/VideoJwts'
+        pcty:
+          $ref: '#/components/schemas/VideoPcty'
+        captions:
+          $ref: '#/components/schemas/VideoCaptions'
+        summary:
+          $ref: '#/components/schemas/VideoSummary'
+        token_key:
+          $ref: '#/components/schemas/VideoTokenKey'
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/VideoEvent'
+      type: object
+    CaptionTranscript:
+      description: Caption transcript in plain text.
+      type: string
+    VideoEvent:
+      description: A video event such as a play
+      required:
+      - type
+      - created_at
+      - payload
+      properties:
+        type:
+          description: The type of event
+          type: string
+        created_at:
+          description: The time this event happened
+          type: string
+        payload:
+          description: An array containing data for this event
+          type: array
+          items: {}
+        user_id:
+          description: The randtag identifier for the user that created this event
+          type: string
+      type: object
+  responses:
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    ValidationError:
+      description: Validation Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+  securitySchemes:
+    bearer:
+      description: Bearer Authorization
+      in: header
+      name: bearer
+      scheme: bearer
+      type: http
+    basic:
+      description: Where `username` and `password` are api `key` and `secret`
+      in: header
+      name: basic
+      scheme: basic
+      type: http
+externalDocs:
+  description: Full API Documentation
+  url: https://developer.vidgrid.com

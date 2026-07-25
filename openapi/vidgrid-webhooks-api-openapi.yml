@@ -1,0 +1,132 @@
+openapi: 3.0.0
+info:
+  title: VidGrid API Reference Caption Webhooks API
+  description: Welcome to the VidGrid [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API!<br/><br/>You can use this API to create and manage resources on your VidGrid account. The API is meant to be used server-side and all requests should be made over SSL.<br/><br/>Code examples can be viewed in the area to the right, and you can switch the language of the examples with the tabs in the top right.
+  termsOfService: https://www.vidgrid.com/terms/
+  contact:
+    name: API Support
+    url: https://help.vidgrid.com
+    email: videoengineering@paylocity.com?subject=API Inquiry
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: '2.0'
+servers:
+- url: https://api.vidgrid.com/ContentManagement
+security:
+- bearer: []
+  basic: []
+tags:
+- name: Webhooks
+  description: The Webhook API allows you to trigger webhook events.
+paths:
+  /vidgrid/v2/webhooks:
+    post:
+      tags:
+      - Webhooks
+      summary: Create webhook event
+      description: This endpoint creates a webhook event.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                video_identifier:
+                  description: The unique identifier of the video you are requesting a webhook event for.
+                  type: string
+                type:
+                  description: The event type.
+                  type: string
+                payload:
+                  description: Extra data to be used by the event.
+                  properties:
+                    application:
+                      description: Paylocity application
+                      type: string
+                  type: object
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  responses:
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    ValidationError:
+      description: Validation Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+  securitySchemes:
+    bearer:
+      description: Bearer Authorization
+      in: header
+      name: bearer
+      scheme: bearer
+      type: http
+    basic:
+      description: Where `username` and `password` are api `key` and `secret`
+      in: header
+      name: basic
+      scheme: basic
+      type: http
+externalDocs:
+  description: Full API Documentation
+  url: https://developer.vidgrid.com

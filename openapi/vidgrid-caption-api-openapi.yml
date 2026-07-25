@@ -1,0 +1,252 @@
+openapi: 3.0.0
+info:
+  title: VidGrid API Reference Caption API
+  description: Welcome to the VidGrid [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API!<br/><br/>You can use this API to create and manage resources on your VidGrid account. The API is meant to be used server-side and all requests should be made over SSL.<br/><br/>Code examples can be viewed in the area to the right, and you can switch the language of the examples with the tabs in the top right.
+  termsOfService: https://www.vidgrid.com/terms/
+  contact:
+    name: API Support
+    url: https://help.vidgrid.com
+    email: videoengineering@paylocity.com?subject=API Inquiry
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: '2.0'
+servers:
+- url: https://api.vidgrid.com/ContentManagement
+security:
+- bearer: []
+  basic: []
+tags:
+- name: Caption
+  description: The Caption API allows you to request and manage closed captioning on your Videos.
+  externalDocs:
+    description: More
+    url: https://developer.vidgrid.com/docs/v2/#caption-api
+paths:
+  /vidgrid/v2/captions/{identifier}:
+    get:
+      tags:
+      - Caption
+      summary: Retrieve caption
+      description: This endpoint returns an array of Caption Resources.
+      parameters:
+      - name: identifier
+        in: path
+        description: ID of caption to return
+        required: false
+        schema:
+          type: string
+      - name: identifiers[]
+        in: query
+        description: The unique identifiers of the desired captions. When set, this takes priority over **identifier**.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: include[]
+        in: query
+        description: An array of properties to be included with the returned Video Resources.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - transcript
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CaptionResource'
+                type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags:
+      - Caption
+      summary: Delete caption
+      description: This endpoint deletes a caption.
+      parameters:
+      - name: identifier
+        in: path
+        description: ID of caption to delete
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          $ref: '#/components/responses/NoContent'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /vidgrid/v2/captions:
+    post:
+      tags:
+      - Caption
+      summary: Create caption
+      description: This endpoint makes a caption request for a Video Resource. It returns a Caption Resource with a status but the caption will not be ready immediately.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                video_identifier:
+                  description: The unique identifier of the video you are requesting a caption for.
+                  type: string
+                type:
+                  description: 'The type of caption you would like to request. Possible values: `machine`, `professional`'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/CaptionResource'
+                type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  responses:
+    NoContent:
+      description: No Content
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    ValidationError:
+      description: Validation Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+  schemas:
+    CaptionResource:
+      title: Caption Resource
+      description: The Caption Resource(s) returned in a successful response.
+      required:
+      - identifier
+      - type
+      - status
+      - video_identifier
+      - language
+      properties:
+        identifier:
+          description: The unique identifier for the caption on VidGrid.
+          type: string
+        language:
+          description: The language of the caption file.
+          type: string
+        status:
+          description: 'The current status of this caption resource. Possible values: `QUEUED`, `PENDING`, `IN_PROGRESS`, `CANCELED`, `FAILED`, `COMPLETED`'
+          type: string
+        type:
+          description: 'The type of caption resource. Possible values: `machine`, `professional`, `manual`, `machine_translation`'
+          type: string
+        video_identifier:
+          description: The unique identifier of the video this caption belongs to.
+          type: string
+        transcript:
+          $ref: '#/components/schemas/CaptionTranscript'
+      type: object
+    CaptionTranscript:
+      description: Caption transcript in plain text.
+      type: string
+  securitySchemes:
+    bearer:
+      description: Bearer Authorization
+      in: header
+      name: bearer
+      scheme: bearer
+      type: http
+    basic:
+      description: Where `username` and `password` are api `key` and `secret`
+      in: header
+      name: basic
+      scheme: basic
+      type: http
+externalDocs:
+  description: Full API Documentation
+  url: https://developer.vidgrid.com

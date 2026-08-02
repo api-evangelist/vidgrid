@@ -1,0 +1,47 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the VidGrid Content Management API
+  version: 1.0.0
+x-generated: '2026-07-21'
+x-method: generated
+extends: openapi/vidgrid-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist:
+      provider: vidgrid
+      profile: https://raw.githubusercontent.com/api-evangelist/vidgrid/refs/heads/main/apis.yml
+      notes: VidGrid is a Paylocity product; keys are Enterprise-restricted after a 14-day trial.
+- target: $.info.contact
+  update:
+    url: https://help.vidgrid.com/
+- target: $.paths['/vidgrid/v2/videos/{identifier}'].get
+  update: {operationId: retrieveVideos}
+- target: $.paths['/vidgrid/v2/videos/{identifier}'].patch
+  update: {operationId: updateVideo}
+- target: $.paths['/vidgrid/v2/videos/{identifier}'].delete
+  update: {operationId: deleteVideo}
+- target: $.paths['/vidgrid/v2/captions/{identifier}'].get
+  update: {operationId: retrieveCaption}
+- target: $.paths['/vidgrid/v2/captions/{identifier}'].delete
+  update: {operationId: deleteCaption}
+- target: $.paths['/vidgrid/v2/captions'].post
+  update: {operationId: createCaption}
+- target: $.paths['/vidgrid/v2/folders/{identifier}'].get
+  update: {operationId: retrieveFolder}
+- target: $.paths['/vidgrid/v2/folders/{identifier}'].patch
+  update: {operationId: updateFolder}
+- target: $.paths['/vidgrid/v2/folders/{identifier}'].delete
+  update: {operationId: deleteFolder}
+- target: $.paths['/vidgrid/v2/folders'].post
+  update: {operationId: createFolder}
+- target: $.paths['/vidgrid/v2/users/{identifier}'].get
+  update: {operationId: retrieveUser}
+- target: $.paths['/vidgrid/v2/users/{identifier}'].delete
+  update: {operationId: deleteUser}
+- target: $.paths['/vidgrid/v2/search/{resource}'].get
+  update: {operationId: searchVideos}
+- target: $.paths['/vidgrid/v2/tokens'].post
+  update: {operationId: createToken}
+- target: $.paths['/vidgrid/v2/webhooks'].post
+  update: {operationId: createWebhookEvent}

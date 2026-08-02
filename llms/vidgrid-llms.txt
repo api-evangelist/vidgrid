@@ -1,0 +1,115 @@
+# VidGrid Help Center
+
+> Advice & answers on the Grid
+
+## How to Use VidGrid
+
+- [What is VidGrid?](https://help.vidgrid.com/en/articles/2553987-what-is-vidgrid.md): VidGrid's Video Platform empowers organizations to record, edit, and share videos in a secure, centralized location.
+- [Account Settings](https://help.vidgrid.com/en/articles/2826395-account-settings.md): Configure your account from your Account Settings on VidGrid.
+- [Recording My Screen and Webcam](https://help.vidgrid.com/en/articles/2554047-recording-my-screen-and-webcam.md): How can I record my screen?
+- [Beta Recorder for Chromebooks](https://help.vidgrid.com/en/articles/4381559-beta-recorder-for-chromebooks.md): Record your screen, webcam, and mic on Chrome.
+- [Recording Webcam Only](https://help.vidgrid.com/en/articles/2554062-recording-webcam-only.md): Webcam only mode records only what your webcam captures.
+- [Record my screen without the toolbar showing](https://help.vidgrid.com/en/articles/3778723-record-my-screen-without-the-toolbar-showing.md): Minimize recording toolbar automatically in fullscreen mode
+- [Record videos on my iPad or iPhone](https://help.vidgrid.com/en/articles/3807880-record-videos-on-my-ipad-or-iphone.md): How can I use VidGrid to record videos on my iPad or iPhone?
+- [Recording Computer Audio](https://help.vidgrid.com/en/articles/2930231-recording-computer-audio.md): How to capture system audio output from your computer while recording.
+- [Uploading Video or Audio Files](https://help.vidgrid.com/en/articles/2554071-uploading-video-or-audio-files.md): Upload video and audio files to VidGrid for easy access.
+- [Using Hotkeys](https://help.vidgrid.com/en/articles/2554059-using-hotkeys.md): Recording video is a breeze with Hotkeys.
+- [Using the Drawing Tool](https://help.vidgrid.com/en/articles/2690980-using-the-drawing-tool.md): Draw on screen while using the screen recorder.
+- [Highlighting Mouse Clicks](https://help.vidgrid.com/en/articles/2704831-highlighting-mouse-clicks.md): Enabling highlighted mouse clicks makes a circle appear on your cursor any time you click within the recorder.
+- [Using the Guest Recorder](https://help.vidgrid.com/en/articles/2554067-using-the-guest-recorder.md): Invite non-VidGrid users to record videos to your account with the Guest Recorder.
+- [Change your caption style](https://help.vidgrid.com/en/articles/4739292-change-your-caption-style.md): Viewers can change font, color, and background of the captions on a video from the caption menu.
+- [Adding Video Captions](https://help.vidgrid.com/en/articles/2583552-adding-video-captions.md): Upload or add machine or professional captions to your videos.
+- [Editing Video Captions](https://help.vidgrid.com/en/articles/2835233-editing-video-captions.md): Edit captions on your videos from the caption dashboard or from the video player
+- [Interactive Captions](https://help.vidgrid.com/en/articles/3143023-interactive-captions.md): Search and edit captions files directly from the video player.
+- [Replacing a Video with a New One](https://help.vidgrid.com/en/articles/3369136-replacing-a-video-with-a-new-one.md): Keep your video content updated by replacing your video but keeping the original links.
+- [Picture in Picture \(PiP\) Video Viewing](https://help.vidgrid.com/en/articles/4860363-picture-in-picture-pip-video-viewing.md): Enabling Picture in Picture mode allows a user to view a video while navigating to other apps, sites, or tabs.
+- [Editing my Video](https://help.vidgrid.com/en/articles/2554096-editing-my-video.md): Make simple edits to your video. Cut or trim out a section, blur out sections, adjust volume, and add some background music.
+- [In-Video Questions](https://help.vidgrid.com/en/articles/2554125-in-video-questions.md): You can add questions to your videos to engage and get valuable insight on your viewers.
+- [Add an image to an in-video question](https://help.vidgrid.com/en/articles/3372251-add-an-image-to-an-in-video-question.md): Display an image in your video with a question below it.
+- [Create a Custom Call to Action](https://help.vidgrid.com/en/articles/3854932-create-a-custom-call-to-action.md): Insert a custom CTA in my video
+- [Adding Chapters](https://help.vidgrid.com/en/articles/2708912-adding-chapters.md): Make your videos easier to navigate with chapters.
+- [Adding In-Video Comments](https://help.vidgrid.com/en/articles/2708907-adding-in-video-comments.md): Insert in-video comments to enrich your videos.
+- [Upload/Download File Attachments from a Video](https://help.vidgrid.com/en/articles/3606602-upload-download-file-attachments-from-a-video.md): Quickly add or download a file directly from the video player
+- [Video Business Card](https://help.vidgrid.com/en/articles/2554300-video-business-card.md): Insert your contact information into your video with your video profile.
+- [Create a folder](https://help.vidgrid.com/en/articles/3808743-create-a-folder.md): How do I create a new folder or organize my videos?
+- [Creating Video Playlists](https://help.vidgrid.com/en/articles/3272539-creating-video-playlists.md): Turn any folder into a shareable playlist to view videos
+- [Video Context Menu](https://help.vidgrid.com/en/articles/2554307-video-context-menu.md): Easily manage your videos from My Grid.
+- [Delete a video](https://help.vidgrid.com/en/articles/2924390-delete-a-video.md): Moving a video to the trash
+- [Remove a video from a folder](https://help.vidgrid.com/en/articles/2924438-remove-a-video-from-a-folder.md): Remove a video from a folder without deleting the video.
+- [Duplicate My Video](https://help.vidgrid.com/en/articles/2583639-duplicate-my-video.md): VidGrid lets users effortlessly duplicate videos.
+- [Manage Video Thumbnail](https://help.vidgrid.com/en/articles/2583646-manage-video-thumbnail.md): Customize videos easily with video thumbnails.
+- [Combining Video Files](https://help.vidgrid.com/en/articles/2562848-combining-video-files.md): Merge multiple videos into a single video file.
+- [Download My Video](https://help.vidgrid.com/en/articles/2583575-download-my-video.md): Download videos from VidGrid directly to your desktop.
+- [Viewing Video Analytics](https://help.vidgrid.com/en/articles/2583718-viewing-video-analytics.md): Video analytics give you insight into your viewers and your videos.
+- [Export Video Analytics](https://help.vidgrid.com/en/articles/3569502-export-video-analytics.md): Export all video analytics by date range from your account
+- [Sharing Videos & Setting View Permissions](https://help.vidgrid.com/en/articles/2583694-sharing-videos-setting-view-permissions.md): Share videos and manage which people can see specific videos.
+- [Add collaborators to view or edit your video](https://help.vidgrid.com/en/articles/3005122-add-collaborators-to-view-or-edit-your-video.md): Allow other VidGrid creators or viewers to edit your video.
+- [Bulk Permissions](https://help.vidgrid.com/en/articles/2721991-bulk-permissions.md): Change multiple videos' permission options at once.
+- [Recording PowerPoint Presentations](https://help.vidgrid.com/en/articles/2554511-recording-powerpoint-presentations.md): Capture PowerPoint presentations with ease on VidGrid.
+- [Upload PowerPoint \(PPT\)](https://help.vidgrid.com/en/articles/2933789-upload-powerpoint-ppt.md): You can upload an existing PowerPoint that will play back with your slides and narration.
+- [LMS Integration Interface](https://help.vidgrid.com/en/articles/3198806-lms-integration-interface.md): The VidGrid Embed tool can be found in any Rich Text Editor \(RCE\) in your LMS.
+- [How to Set Up the Blackboard Learn SaaS Integration](https://help.vidgrid.com/en/articles/3546332-how-to-set-up-the-blackboard-learn-saas-integration.md): Setup all VidGrid integrations within the Blackboard Learn SaaS \(Ultra & Original Navigation without Building Blocks\)
+- [How Do I Use VidGrid in My Course?](https://help.vidgrid.com/en/articles/2554321-how-do-i-use-vidgrid-in-my-course.md): Using VidGrid is an easy way to make your courses even more interactive.
+- [Recording & Embedding in My LMS](https://help.vidgrid.com/en/articles/2554332-recording-embedding-in-my-lms.md): How do I record and embed videos in my LMS?
+- [Video Quizzes in My LMS](https://help.vidgrid.com/en/articles/2554485-video-quizzes-in-my-lms.md): Add In-Video questions to your video that will pass directly back to your gradebook.
+- [Student Recording Assignments](https://help.vidgrid.com/en/articles/3195992-student-recording-assignments.md): The easiest way for instructors and students to assign, complete, view, and grade student video assignments in your LMS
+- [Student \(Guest\) Recording for an Assignment](https://help.vidgrid.com/en/articles/2554507-student-guest-recording-for-an-assignment.md): Having your students record a presentation or assignment for a class without a VidGrid account is super simple with our Guest Recorder.
+
+## FAQs
+
+- [Contact Support](https://help.vidgrid.com/en/articles/2924587-contact-support.md): If you have issues anywhere within VidGrid, you can reach out to our support team! We're around M-F 9am - 5pm CST.
+- [Reset Password](https://help.vidgrid.com/en/articles/2886408-reset-password.md): How to reset a user's password.
+- [Record button is missing](https://help.vidgrid.com/en/articles/3270005-record-button-is-missing.md): I do not see the record button when I log into VidGrid
+- [Download a Video](https://help.vidgrid.com/en/articles/2554527-download-a-video.md): Can I save my video to my computer?
+- [How can I adjust playback speed?](https://help.vidgrid.com/en/articles/2926483-how-can-i-adjust-playback-speed.md): Easily change the playback speed of your video when viewing.
+- [Supported File Upload Formats](https://help.vidgrid.com/en/articles/2554528-supported-file-upload-formats.md): What file types does VidGrid support for uploading existing content?
+- [Supported Browsers and Operating Systems](https://help.vidgrid.com/en/articles/2943376-supported-browsers-and-operating-systems.md): Will VidGrid work on my browser and operating system?
+- [Troubleshoot Quiz Grade not Submitting](https://help.vidgrid.com/en/articles/5391939-troubleshoot-quiz-grade-not-submitting.md): There are a few items to be aware of to ensure a student's grade is entered into the gradebook when using the Quiz LTI
+- [Third Party Cookies Blocked](https://help.vidgrid.com/en/articles/2554558-third-party-cookies-blocked.md): Enabling browser cookies to login and view/create videos.
+- [How to Clear Browser Cache](https://help.vidgrid.com/en/articles/3881088-how-to-clear-browser-cache.md): Directions for clearing cache in each browser
+- [Enabling Screen Recording Permission on macOS Catalina \(10.15\)](https://help.vidgrid.com/en/articles/3439939-enabling-screen-recording-permission-on-macos-catalina-10-15.md): How to allow screen recording on your Mac with version 10.15
+- [Recorder Not Launching](https://help.vidgrid.com/en/articles/2554283-recorder-not-launching.md): How do I get the recorder to launch?
+- [Recording failed to start](https://help.vidgrid.com/en/articles/3456450-recording-failed-to-start.md): What to do if the Windows recorder displays "recording failed to start"
+- [Windows "N" Versions](https://help.vidgrid.com/en/articles/3021010-windows-n-versions.md): Computers running Windows N or Windows NK editions must download the Media Feature Pack from Microsoft to use the recorder.
+- [Copying my course breaks my video assignments](https://help.vidgrid.com/en/articles/3322473-copying-my-course-breaks-my-video-assignments.md): "The assignment is not configured yet"
+- [Recovering Your Video If It Didn't Auto-Upload](https://help.vidgrid.com/en/articles/2554533-recovering-your-video-if-it-didn-t-auto-upload.md): How do I find my video if it did not automatically upload to VidGrid?
+- [Webcam Is Not Working](https://help.vidgrid.com/en/articles/2554550-webcam-is-not-working.md): Problem: My webcam is not displaying.
+- [Fix Large or Unaccepted Videos with Handbrake](https://help.vidgrid.com/en/articles/3541272-fix-large-or-unaccepted-videos-with-handbrake.md): If your video fails to upload or VidGrid doesn't like the format, doing these simple steps could help.
+- [Session Has Expired](https://help.vidgrid.com/en/articles/2554521-session-has-expired.md): What does it mean when my recorder says "session has expired"?
+- [Video Access Error](https://help.vidgrid.com/en/articles/2754623-video-access-error.md): This video is no longer available. The account that owns this video has been deactivated.
+- [Network Connectivity Issues and Custom Proxies](https://help.vidgrid.com/en/articles/2554543-network-connectivity-issues-and-custom-proxies.md): When launching the VidGrid recorder, you may encounter an error such as the following: "IOException. Check network connection."
+- [Support Chat broken in Firefox](https://help.vidgrid.com/en/articles/2682775-support-chat-broken-in-firefox.md): Firefox browser settings can hide the support chat icon.
+
+## Administrative
+
+- [Admin Abilities](https://help.vidgrid.com/en/articles/2835138-admin-abilities.md): A guide to unique Admin capabilities on VidGrid.
+- [Blackboard LTI Update - Summer 2021](https://help.vidgrid.com/en/articles/5301657-blackboard-lti-update-summer-2021.md): Navigating the recent Blackboard Update
+- [Embed VidGrid's tutorial videos in your company help center.](https://help.vidgrid.com/en/articles/3002474-embed-vidgrid-s-tutorial-videos-in-your-company-help-center.md): Keep your help center always up to date by embedding VidGrid help videos.
+- [Organization Account Settings](https://help.vidgrid.com/en/articles/2968870-organization-account-settings.md): Additional account settings for Admins to set up for their organization
+- [Admin View](https://help.vidgrid.com/en/articles/2890242-admin-view.md): Keep track of your organization's videos with Admin View.
+- [Managing Users/Groups](https://help.vidgrid.com/en/articles/2583687-managing-users-groups.md): Managing users and groups simplifies organization on VidGrid.
+- [Transfer Video Ownership](https://help.vidgrid.com/en/articles/3040773-transfer-video-ownership.md): Admins can transfer the ownership of videos to another user
+- [Org Library](https://help.vidgrid.com/en/articles/2896337-org-library.md): Everything you need to know about organizing your videos in the Org Library.
+- [Export Organization Analytics](https://help.vidgrid.com/en/articles/2924455-export-organization-analytics.md): Admins can export their organizations video analytics from the Dashboard.
+- [How to set up your VidGrid LMS integration](https://help.vidgrid.com/en/articles/3388493-how-to-set-up-your-vidgrid-lms-integration.md): VidGrid integrates into all major LMS systems via LTI standards. This article outlines the multiple LMS versions supported for setup.
+- [How to set up the 1.3 Moodle Quiz and Student Record](https://help.vidgrid.com/en/articles/6170947-how-to-set-up-the-1-3-moodle-quiz-and-student-record.md)
+- [Automatically create users through LTI integration](https://help.vidgrid.com/en/articles/3661600-automatically-create-users-through-lti-integration.md): Choose level of VidGrid access based on user roles in the LMS automatically.
+- [How to set up the Canvas Integration](https://help.vidgrid.com/en/articles/3512831-how-to-set-up-the-canvas-integration.md): Install the Canvas integration for embedded videos in your course, graded video quizzes, student recording assignments, and full app access.
+- [How to set up Blackboard Integrations for Self/Manage Hosted + SaaS Original.](https://help.vidgrid.com/en/articles/2554183-how-to-set-up-blackboard-integrations-for-self-manage-hosted-saas-original.md): All Blackboard versions utilizing the Original Experience will follow these setup steps.
+- [How to set up the Moodle Integration](https://help.vidgrid.com/en/articles/2554204-how-to-set-up-the-moodle-integration.md): The VidGrid + Moodle Plugin allows faculty to embed VidGrid video without ever leaving the Moodle LMS.
+- [How to set up the D2L integration](https://help.vidgrid.com/en/articles/3540928-how-to-set-up-the-d2l-integration.md): Instructions to install all VidGrid integrations for Brightspace D2L
+- [\(Optional\) VidGrid Portal - Moodle](https://help.vidgrid.com/en/articles/2981787-optional-vidgrid-portal-moodle.md): Add the full VidGrid app in Moodle with HTML Blocks
+- [\(Optional\) Moodle LMS Setup - oEmbed](https://help.vidgrid.com/en/articles/2581024-optional-moodle-lms-setup-oembed.md): Insert links anywhere in Moodle and the video will auto-embed for the end user.
+- [SalesLoft Integration](https://help.vidgrid.com/en/articles/2554209-salesloft-integration.md): Record, edit, and upload your videos from within SalesLoft.
+- [Gmail Integration](https://help.vidgrid.com/en/articles/2554223-gmail-integration.md): Record, search, and upload your videos from within Gmail.
+- [Outlook Integration](https://help.vidgrid.com/en/articles/2554239-outlook-integration.md): Record, upload, search, and insert your videos from within your Outlook app.
+- [Zoom Integration](https://help.vidgrid.com/en/articles/2670194-zoom-integration.md): Automatically upload Zoom recordings to VidGrid with VidGrid’s Zoom integration.
+- [Finding My API Keys](https://help.vidgrid.com/en/articles/2554245-finding-my-api-keys.md): How to access your API keys.
+- [API Docs for Developers](https://help.vidgrid.com/en/articles/2554249-api-docs-for-developers.md): Welcome to the VidGrid API!
+- [API End-User Help Guide](https://help.vidgrid.com/en/articles/2554250-api-end-user-help-guide.md): What to do if you're having trouble with VidGrid API as a user.
+- [Whitelisting Domains](https://help.vidgrid.com/en/articles/2554253-whitelisting-domains.md): Allow intranet users to view content without an account
+- [Single Sign On \(SSO\)](https://help.vidgrid.com/en/articles/2554255-single-sign-on-sso.md): Easy user authentication through existing credentials
+- [Transcode Settings for Uploaded Videos](https://help.vidgrid.com/en/articles/2554262-transcode-settings-for-uploaded-videos.md): Select preferred quality settings for uploaded videos
+- [Closed-Captioning Settings](https://help.vidgrid.com/en/articles/2554268-closed-captioning-settings.md): How do I manage closed caption settings?
+- [Custom Branding for Your Account](https://help.vidgrid.com/en/articles/2554278-custom-branding-for-your-account.md): Add an organization name and logo to your profile for simple custom branding.
+- [Billing & Payments](https://help.vidgrid.com/en/articles/2554270-billing-payments.md): Add payment information in Account Settings.

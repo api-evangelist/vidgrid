@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/vidgrid-openapi-original.json + https://developer.vidgrid.com/docs/v2/ (error reference)
+format: proprietary
+envelope:
+  shape: '{"message": "A message explaining what went wrong."}'
+  note: VidGrid does not use RFC 9457 application/problem+json; errors are a JSON object with a single message field.
+problems:
+- status: 401
+  title: Unauthorized
+  detail: Missing or invalid API credentials (Basic key:secret or bearer token).
+  remediation: Verify the API key and secret from https://app.vidgrid.com/integrations and base64-encode them as key:secret.
+  source_operations: all operations
+- status: 403
+  title: Forbidden
+  detail: Credentials are valid but do not permit the requested action on this resource.
+  source_operations: all operations
+- status: 404
+  title: Not found
+  detail: The requested resource identifier does not exist.
+  source_operations: all operations with {identifier}
+- status: 422
+  title: Validation error
+  detail: The request body or parameters failed validation.
+  remediation: Check required fields and allowed values (e.g. caption type must be machine or professional; token type must be record, upload, or direct_upload).
+  source_operations: all operations
+- status: 500
+  title: Internal Server Error
+  detail: Documented as 50X Internal Server Error in the v2 reference.
+  source_operations: all operations
+success_codes:
+- status: 200
+  title: OK
+- status: 204
+  title: No Content
+  note: Returned by DELETE operations.
+rate_limit_signaling:
+  note: X-RateLimit-Limit and X-RateLimit-Remaining are returned on every response; see rate-limits/vidgrid-rate-limits.yml.

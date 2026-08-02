@@ -1,0 +1,1863 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "VidGrid API Reference",
+        "description": "Welcome to the VidGrid [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API!<br/><br/>You can use this API to create and manage resources on your VidGrid account. The API is meant to be used server-side and all requests should be made over SSL.<br/><br/>Code examples can be viewed in the area to the right, and you can switch the language of the examples with the tabs in the top right.",
+        "termsOfService": "https://www.vidgrid.com/terms/",
+        "contact": {
+            "name": "API Support",
+            "url": "https://help.vidgrid.com",
+            "email": "videoengineering@paylocity.com?subject=API Inquiry"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "2.0"
+    },
+    "servers": [
+        {
+            "url": "https://api.vidgrid.com/ContentManagement"
+        }
+    ],
+    "paths": {
+        "/vidgrid/v2/videos/{identifier}": {
+            "get": {
+                "tags": [
+                    "Video"
+                ],
+                "summary": "Retrieve videos",
+                "description": "This endpoint returns an array of Video Resources.",
+                "parameters": [
+                    {
+                        "name": "identifier",
+                        "in": "path",
+                        "description": "ID of video to return",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "identifiers[]",
+                        "in": "query",
+                        "description": "The unique identifiers of the desired videos. When set, this takes priority over **identifier**.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "description": "An array of properties to be included with the returned Video Resources.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "signed_url",
+                                    "metadata",
+                                    "thumbnail",
+                                    "jwts",
+                                    "manage_jwt",
+                                    "captions",
+                                    "token_key",
+                                    "events",
+                                    "summary",
+                                    "pcty",
+                                    "status"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/VideoResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalServerError"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Video"
+                ],
+                "summary": "Delete video",
+                "description": "This endpoint deletes a video.",
+                "parameters": [
+                    {
+                        "name": "identifier",
+                        "in": "path",
+                        "description": "ID of video to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "trash": {
+                                        "description": "If set to true, the video will be placed in the VidGrid trash for 30 days. If set to false, the trash will be skipped and the video will be deleted immediately.",
+                                        "type": "boolean",
+                                        "default": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "$ref": "#/components/responses/NoContent"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalServerError"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Video"
+                ],
+                "summary": "Update video",
+                "description": "This endpoint updates a video and then returns it as a Video Resource.",
+                "parameters": [
+                    {
+                        "name": "identifier",
+                        "in": "path",
+                        "description": "ID of video to update",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "properties": {
+                                        "properties": {
+                                            "title": {
+                                                "description": "Updates the video title.",
+                                                "type": "string"
+                                            },
+                                            "view_permissions": {
+                                                "description": "Updates the video view permissions as visible to anyone (PUBLIC), requiring a login to view (TEAM) or private to the owner and admins (ONLY_ME).",
+                                                "type": "string",
+                                                "enum": [
+                                                    "PUBLIC",
+                                                    "TEAM",
+                                                    "ONLY_ME"
+                                                ]
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/VideoResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalServerError"
+                    }
+                }
+            }
+        },
+        "/vidgrid/v2/captions/{identifier}": {
+            "get": {
+                "tags": [
+                    "Caption"
+                ],
+                "summary": "Retrieve caption",
+                "description": "This endpoint returns an array of Caption Resources.",
+                "parameters": [
+                    {
+                        "name": "identifier",
+                        "in": "path",
+                        "description": "ID of caption to return",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "identifiers[]",
+                        "in": "query",
+                        "description": "The unique identifiers of the desired captions. When set, this takes priority over **identifier**.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "description": "An array of properties to be included with the returned Video Resources.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "transcript"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CaptionResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalServerError"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Caption"
+                ],
+                "summary": "Delete caption",
+                "description": "This endpoint deletes a caption.",
+                "parameters": [
+                    {
+                        "name": "identifier",
+                        "in": "path",
+                        "description": "ID of caption to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "$ref": "#/components/responses/NoContent"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalServerError"
+                    }
+                }
+            }
+        },
+        "/vidgrid/v2/folders/{identifier}": {
+            "get": {
+                "tags": [
+                    "Folder"
+                ],
+                "summary": "Retrieve folder",
+                "description": "This endpoint returns an array of Folder Resources.",
+                "parameters": [
+                    {
+                        "name": "identifier",
+                        "in": "path",
+                        "description": "ID of folder to return",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "identifiers[]",
+                        "in": "query",
+                        "description": "The unique identifiers of the desired folders. When set, this takes priority over **identifier**.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "description": "An array of properties to be included with the returned Folder Resources.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "playlist"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/FolderResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalServerError"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Folder"
+                ],
+                "summary": "Delete folder",
+                "description": "This endpoint deletes a folder.",
+                "parameters": [
+                    {
+                        "name": "identifier",
+                        "in": "path",
+                        "description": "ID of folder to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "$ref": "#/components/responses/NoContent"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalServerError"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Folder"
+                ],
+                "summary": "Update folder",
+                "description": "This endpoint updates a folder and then returns it as a Folder Resource.",
+                "parameters": [
+                    {
+                        "name": "identifier",
+                        "in": "path",
+                        "description": "ID of folder to update",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "properties": {
+                                        "properties": {
+                                            "title": {
+                                                "description": "Updates the folder title.",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/FolderResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalServerError"
+                    }
+                }
+            }
+        },
+        "/vidgrid/v2/users/{identifier}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Retrieve user",
+                "description": "This endpoint returns an array of User Resources.",
+                "parameters": [
+                    {
+                        "name": "identifier",
+                        "in": "path",
+                        "description": "ID of user to return",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "identifiers[]",
+                        "in": "query",
+                        "description": "The unique identifiers of the desired users. When set, this takes priority over **identifier**.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/UserResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalServerError"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Delete user",
+                "description": "This endpoint deletes a user.",
+                "parameters": [
+                    {
+                        "name": "identifier",
+                        "in": "path",
+                        "description": "ID of user to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "transfer_videos_to": {
+                                        "description": "Specifies whether to transfer this user's videos to another user, the organization's guest user, or to delete them permanently. Possible values: `{user_identifier}`, `ORGANIZATION`, `DELETE`",
+                                        "type": "string"
+                                    },
+                                    "transfer_shared_folders_to": {
+                                        "description": "Specifies whether to transfer this user's shared folders to another user or to delete them permanently.Possible values: `{user_identifier}`, `DELETE`",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "$ref": "#/components/responses/NoContent"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalServerError"
+                    }
+                }
+            }
+        },
+        "/vidgrid/v2/search/{resource}": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "Search videos",
+                "description": "This endpoint returns a list of videos by page.",
+                "parameters": [
+                    {
+                        "name": "resource",
+                        "in": "path",
+                        "description": "Resource to search for",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "videos"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number to return",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "int32",
+                            "example": "1"
+                        }
+                    },
+                    {
+                        "name": "filter[]",
+                        "in": "query",
+                        "description": "Filter to use",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "mine",
+                                    "ready"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "current_page": {
+                                            "type": "number",
+                                            "format": "int32"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/VideoResource"
+                                            }
+                                        },
+                                        "first_page_url": {
+                                            "type": "string",
+                                            "format": "URL"
+                                        },
+                                        "from": {
+                                            "type": "number",
+                                            "format": "int32"
+                                        },
+                                        "last_page": {
+                                            "type": "number",
+                                            "format": "int32"
+                                        },
+                                        "last_page_url": {
+                                            "type": "string",
+                                            "format": "URL"
+                                        },
+                                        "links": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "url": {
+                                                        "type": "string",
+                                                        "format": "URL"
+                                                    },
+                                                    "label": {
+                                                        "type": "string"
+                                                    },
+                                                    "active": {
+                                                        "type": "boolean"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "next_page_url": {
+                                            "type": "string",
+                                            "format": "URL"
+                                        },
+                                        "path": {
+                                            "type": "string",
+                                            "format": "URL"
+                                        },
+                                        "per_page": {
+                                            "type": "number",
+                                            "format": "int32"
+                                        },
+                                        "prev_page_url": {
+                                            "type": "string",
+                                            "format": "URL"
+                                        },
+                                        "to": {
+                                            "type": "number",
+                                            "format": "int32"
+                                        },
+                                        "total": {
+                                            "type": "number",
+                                            "format": "int32"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalServerError"
+                    }
+                }
+            }
+        },
+        "/vidgrid/v2/captions": {
+            "post": {
+                "tags": [
+                    "Caption"
+                ],
+                "summary": "Create caption",
+                "description": "This endpoint makes a caption request for a Video Resource. It returns a Caption Resource with a status but the caption will not be ready immediately.",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "video_identifier": {
+                                        "description": "The unique identifier of the video you are requesting a caption for.",
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "description": "The type of caption you would like to request. Possible values: `machine`, `professional`",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/CaptionResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalServerError"
+                    }
+                }
+            }
+        },
+        "/vidgrid/v2/folders": {
+            "post": {
+                "tags": [
+                    "Folder"
+                ],
+                "summary": "Create folder",
+                "description": "This endpoint creates a folder and then returns it as a Folder Resource.",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "description": "Sets the folder title.",
+                                        "type": "string"
+                                    },
+                                    "is_in_org_library": {
+                                        "description": "Whether or not to place this folder into the Organization Library.",
+                                        "type": "boolean",
+                                        "default": false
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/FolderResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalServerError"
+                    }
+                }
+            }
+        },
+        "/vidgrid/v2/tokens": {
+            "post": {
+                "tags": [
+                    "Token"
+                ],
+                "summary": "Create token",
+                "description": "This endpoint generates and returns a Token Resource that can be used for creating videos.",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "type": {
+                                        "description": "The type of token that will be used. See Token Types for more info. Possible values: `record`, `upload`, `direct_upload`.",
+                                        "type": "string"
+                                    },
+                                    "video": {
+                                        "description": "Sets properties on videos created with this token.",
+                                        "properties": {
+                                            "title": {
+                                                "description": "Sets the title for the created video. If `recorder.hide_video_title` is set to `false` the end user will have the option to set their own title from within the recorder.",
+                                                "type": "string"
+                                            },
+                                            "public": {
+                                                "description": "When set to `true`, an uploaded video will be viewable by anyone with a link. If set to `false`, a user must be logged in to your VidGrid account to view the video. If not set, your user or organization default settings will be used.",
+                                                "type": "boolean"
+                                            },
+                                            "folder": {
+                                                "description": "Automatically add uploaded videos to a folder. This should be set to a folder **identifier**.",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "recorder": {
+                                        "description": "Configures recorder behavior when launched via a specific token.",
+                                        "properties": {
+                                            "auto_show_video_page": {
+                                                "description": "Whether or not to automatically open the video in the user's browser after recording.",
+                                                "type": "boolean",
+                                                "default": false
+                                            },
+                                            "auto_close_recorder": {
+                                                "description": "Whether or not to close the recorder when it is finished uploading the video. If set to `true`, the user will only be able to record one video with this token.",
+                                                "type": "boolean",
+                                                "default": false
+                                            },
+                                            "hide_video_title_input": {
+                                                "description": "Whether or not to allow the user to title the video after recording.",
+                                                "type": "boolean",
+                                                "default": false
+                                            },
+                                            "default_fullscreen": {
+                                                "description": "Whether or not the recorder should launch in fullscreen mode.",
+                                                "type": "boolean",
+                                                "default": false
+                                            },
+                                            "force_webcam_only": {
+                                                "description": "Whether or not the recorder should be restricted to webcam only mode.",
+                                                "type": "boolean",
+                                                "default": false
+                                            },
+                                            "on_install": {
+                                                "properties": {
+                                                    "auto_authenticate": {
+                                                        "description": "Whether or not a user should be automatically authenticated the first time the recorder is launched after install. If set to `false`, the user will need to return to their browser and click record in order to be authenticated.",
+                                                        "type": "boolean",
+                                                        "default": true
+                                                    },
+                                                    "show_instructions_page": {
+                                                        "description": "Whether or not to download the recorder without redirecting to the install recorder page. This happens the first time a use clicks record when using the iframe method.",
+                                                        "type": "boolean",
+                                                        "default": false
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "webhook_extras": {
+                                        "description": "Any extra data that you would like to be sent along when Webhook events are fired.",
+                                        "type": "array",
+                                        "items": {}
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "oneOf": [
+                                                {
+                                                    "$ref": "#/components/schemas/RecordTokenResource"
+                                                },
+                                                {
+                                                    "$ref": "#/components/schemas/UploadTokenResource"
+                                                },
+                                                {
+                                                    "$ref": "#/components/schemas/DirectUploadTokenResource"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalServerError"
+                    }
+                }
+            }
+        },
+        "/vidgrid/v2/webhooks": {
+            "post": {
+                "tags": [
+                    "Webhooks"
+                ],
+                "summary": "Create webhook event",
+                "description": "This endpoint creates a webhook event.",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "video_identifier": {
+                                        "description": "The unique identifier of the video you are requesting a webhook event for.",
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "description": "The event type.",
+                                        "type": "string"
+                                    },
+                                    "payload": {
+                                        "description": "Extra data to be used by the event.",
+                                        "properties": {
+                                            "application": {
+                                                "description": "Paylocity application",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalServerError"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CaptionTranscript": {
+                "description": "Caption transcript in plain text.",
+                "type": "string"
+            },
+            "FolderPlaylist": {
+                "description": "Class ApiFolderPropertyPlaylistService",
+                "properties": {
+                    "enabled": {
+                        "description": "Whether or not this folder is in the Organization Library.",
+                        "type": "boolean"
+                    },
+                    "view_url": {
+                        "description": "URL to view the playlist for this folder.",
+                        "type": "string",
+                        "format": "URL"
+                    },
+                    "embed_url": {
+                        "description": "URL to embed the playlist for this folder.",
+                        "type": "string",
+                        "format": "URL"
+                    }
+                },
+                "type": "object"
+            },
+            "RecordTokenResource": {
+                "title": "Record Token Resource",
+                "description": "The Record Token Resource returned in a successful response.",
+                "required": [
+                    "token",
+                    "token_key",
+                    "expires",
+                    "recorder"
+                ],
+                "properties": {
+                    "token": {
+                        "description": "One-time token that is used for authentication when recording and uploading a video.",
+                        "type": "string"
+                    },
+                    "token_key": {
+                        "description": "Public identifier corresponding to the token.",
+                        "type": "string"
+                    },
+                    "expires": {
+                        "description": "UNIX Timestamp (UTC) indicating when the temporary token will expire.",
+                        "type": "string",
+                        "format": "timestamp"
+                    },
+                    "recorder": {
+                        "properties": {
+                            "download_url": {
+                                "description": "URL that can be used to download the recorder.",
+                                "type": "string",
+                                "format": "URL"
+                            },
+                            "launch_uri": {
+                                "description": "URI that can be used to launch the recorder.",
+                                "type": "string",
+                                "format": "URI"
+                            },
+                            "iframe_button": {
+                                "description": "Iframe containing a record button. It will handle downloading and launching the recorder.",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "UploadTokenResource": {
+                "title": "Upload Token Resource",
+                "description": "The Upload Token Resource returned in a successful response.",
+                "required": [
+                    "token",
+                    "token_key",
+                    "expires",
+                    "uploader"
+                ],
+                "properties": {
+                    "token": {
+                        "description": "One-time token that is used for authentication when uploading a video.",
+                        "type": "string"
+                    },
+                    "token_key": {
+                        "description": "Public identifier corresponding to the token.",
+                        "type": "string"
+                    },
+                    "expires": {
+                        "description": "UNIX Timestamp (UTC) indicating when the temporary token will expire.",
+                        "type": "string",
+                        "format": "timestamp"
+                    },
+                    "uploader": {
+                        "properties": {
+                            "iframe": {
+                                "description": "Iframe containing a simple upload dropzone.",
+                                "type": "string"
+                            },
+                            "iframe_basic": {
+                                "description": "Iframe containing a simple upload button.",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "DirectUploadTokenResource": {
+                "title": "Direct Upload Token Resource",
+                "description": "The Direct Upload Token Resource returned in a successful response.",
+                "required": [
+                    "token",
+                    "token_key",
+                    "expires",
+                    "uploader"
+                ],
+                "properties": {
+                    "token": {
+                        "description": "One-time token that is used for authentication when uploading a video. It is then mainly used for informational purposes.",
+                        "type": "string"
+                    },
+                    "token_key": {
+                        "description": "Public identifier corresponding to the token.",
+                        "type": "string"
+                    },
+                    "formAttributes": {
+                        "description": "Form attributes necessary for the S3 upload.",
+                        "properties": {
+                            "action": {
+                                "type": "string"
+                            },
+                            "method": {
+                                "type": "string"
+                            },
+                            "enctype": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "formInputs": {
+                        "description": "Key/value pairs necessary for the S3 upload. <i>Important: **formInputs.key** contains a **${filename}** string that needs to be replaced with a unique file name for each file uploaded. This will also be used for the video title in VidGrid unless `video.title` is set in the Create Token request.</i>",
+                        "properties": {
+                            "key": {
+                                "type": "string"
+                            },
+                            "acl": {
+                                "type": "string"
+                            },
+                            "x-amz-server-side-encryption": {
+                                "type": "string"
+                            },
+                            "X-Amz-Credential": {
+                                "type": "string"
+                            },
+                            "X-Amz-Algorithm": {
+                                "type": "string"
+                            },
+                            "X-Amz-Date": {
+                                "type": "string"
+                            },
+                            "X-Amz-Signature": {
+                                "type": "string"
+                            },
+                            "Policy": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "fileParamName": {
+                        "description": "The required key name that should contain the file data for uploading. <i>Important: Amazon requires this to be the last key/value pair included in the POST to S3.</i>",
+                        "type": "string"
+                    },
+                    "cloudUploadCallbackUrl": {
+                        "description": "URL to `POST` to once a video has finished uploading to S3 and is ready for processing. Returns a video identifier. <i>Important: you need to include `cloudKey` with the request which is the value of `formInputs.key` after **${filename}** has been replaced.</i>",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "VideoCaptions": {
+                "description": "Caption Resources attached to this video.",
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/CaptionResource"
+                }
+            },
+            "VideoJwts": {
+                "description": "A single-use access token that can be used to grant permissions for a video on VidGrid. On page load a new access token will be generated that allows the user to access the video for 6 hours, but the token in the URL will have expired. You can use the token with view or embed URLs as follows: `{embed_url}?auth={jwts.token_type}`",
+                "required": [
+                    "view",
+                    "edit"
+                ],
+                "properties": {
+                    "view": {
+                        "description": "Grants view permissions",
+                        "type": "string"
+                    },
+                    "edit": {
+                        "description": "Grants edit permissions",
+                        "type": "string"
+                    },
+                    "manage": {
+                        "description": "Grants manage permissions",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "VideoMetadata": {
+                "description": "Metadata describing a video.",
+                "properties": {
+                    "duration": {
+                        "description": "Duration of the video in seconds.",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "filesize": {
+                        "description": "Size of the video in bytes. Filesize may differ between videos uploaded and videos done processing.",
+                        "type": "integer"
+                    },
+                    "filetype": {
+                        "description": "File type of the video file.",
+                        "type": "string"
+                    },
+                    "height": {
+                        "description": "Height of the video. Height may differ between videos uploaded and videos done  processing.",
+                        "type": "integer"
+                    },
+                    "width": {
+                        "description": "Width of the video. Width may differ between videos uploaded and videos done processing. ",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "VideoSignedUrl": {
+                "description": "Signed URL that can be used to view the video file directly. Expires after 6 hours.",
+                "type": "string",
+                "format": "URL"
+            },
+            "VideoThumbnails": {
+                "description": "Signed URLs that can be used to view video thumbnails.",
+                "properties": {
+                    "signed_url": {
+                        "description": "Signed URL for the video thumbnail.",
+                        "type": "string",
+                        "format": "URL"
+                    },
+                    "signed_url_small": {
+                        "description": "Signed URL for a smaller version of the video thumbnail.",
+                        "type": "string",
+                        "format": "URL"
+                    }
+                },
+                "type": "object"
+            },
+            "VideoTokenKey": {
+                "description": "Public identifier corresponding to the Token Resource used when creating a video through the API.",
+                "type": "string"
+            },
+            "VideoViewPermissions": {
+                "description": "View permissions for this video; public, team members (login required to view), group-restricted, or private (owner and admins can view).",
+                "type": "string",
+                "enum": [
+                    "PUBLIC",
+                    "TEAM",
+                    "GROUP",
+                    "ONLY_ME"
+                ]
+            },
+            "CaptionResource": {
+                "title": "Caption Resource",
+                "description": "The Caption Resource(s) returned in a successful response.",
+                "required": [
+                    "identifier",
+                    "type",
+                    "status",
+                    "video_identifier",
+                    "language"
+                ],
+                "properties": {
+                    "identifier": {
+                        "description": "The unique identifier for the caption on VidGrid.",
+                        "type": "string"
+                    },
+                    "language": {
+                        "description": "The language of the caption file.",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "The current status of this caption resource. Possible values: `QUEUED`, `PENDING`, `IN_PROGRESS`, `CANCELED`, `FAILED`, `COMPLETED`",
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "The type of caption resource. Possible values: `machine`, `professional`, `manual`, `machine_translation`",
+                        "type": "string"
+                    },
+                    "video_identifier": {
+                        "description": "The unique identifier of the video this caption belongs to.",
+                        "type": "string"
+                    },
+                    "transcript": {
+                        "$ref": "#/components/schemas/CaptionTranscript"
+                    }
+                },
+                "type": "object"
+            },
+            "FolderResource": {
+                "title": "Folder Resource",
+                "description": "The Folder Resource(s) returned in a successful response.",
+                "required": [
+                    "identifier",
+                    "title",
+                    "view_url",
+                    "is_in_org_library"
+                ],
+                "properties": {
+                    "identifier": {
+                        "description": "The unique identifier for the folder.",
+                        "type": "string"
+                    },
+                    "title": {
+                        "description": "Title of the folder.",
+                        "type": "string"
+                    },
+                    "is_in_org_library": {
+                        "description": "Whether or not this folder is in the Organization Library.",
+                        "type": "boolean"
+                    },
+                    "view_url": {
+                        "description": "URL to view the folder.",
+                        "type": "string",
+                        "format": "URL"
+                    },
+                    "playlist": {
+                        "$ref": "#/components/schemas/FolderPlaylist"
+                    }
+                },
+                "type": "object"
+            },
+            "UserResource": {
+                "title": "User Resource",
+                "description": "The User Resource(s) returned in a successful response.",
+                "required": [
+                    "identifier",
+                    "email",
+                    "name"
+                ],
+                "properties": {
+                    "identifier": {
+                        "description": "The unique identifier for the user.",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The user's email.",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The user's name.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "UserPcty": {
+                "description": "Pcty reference data for a User",
+                "properties": {
+                    "pcty_employee_id": {
+                        "description": "Paylocity user employee id",
+                        "type": "string"
+                    },
+                    "pcty_company_id": {
+                        "description": "Paylocity user company id",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "VideoEvent": {
+                "description": "A video event such as a play",
+                "required": [
+                    "type",
+                    "created_at",
+                    "payload"
+                ],
+                "properties": {
+                    "type": {
+                        "description": "The type of event",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "The time this event happened",
+                        "type": "string"
+                    },
+                    "payload": {
+                        "description": "An array containing data for this event",
+                        "type": "array",
+                        "items": {}
+                    },
+                    "user_id": {
+                        "description": "The randtag identifier for the user that created this event",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "VideoResource": {
+                "title": "Video Resource",
+                "description": "The Video Resource(s) returned in a successful response.",
+                "required": [
+                    "identifier",
+                    "title",
+                    "view_url",
+                    "embed_url",
+                    "view_permissions"
+                ],
+                "properties": {
+                    "identifier": {
+                        "description": "The unique identifier for the video.",
+                        "type": "string"
+                    },
+                    "title": {
+                        "description": "Title of the video.",
+                        "type": "string"
+                    },
+                    "view_url": {
+                        "description": "URL to view the video.",
+                        "type": "string",
+                        "format": "url"
+                    },
+                    "embed_url": {
+                        "description": "URL to embed the video.",
+                        "type": "string",
+                        "format": "url"
+                    },
+                    "view_permissions": {
+                        "description": "Video view permissions: visible to anyone with a link (PUBLIC), requires a login to view (TEAM), or private to the owner and admins (ONLY_ME).",
+                        "type": "string"
+                    },
+                    "signed_url": {
+                        "$ref": "#/components/schemas/VideoSignedUrl"
+                    },
+                    "metadata": {
+                        "$ref": "#/components/schemas/VideoMetadata"
+                    },
+                    "thumbnail": {
+                        "$ref": "#/components/schemas/VideoThumbnails"
+                    },
+                    "jwt": {
+                        "$ref": "#/components/schemas/VideoJwts"
+                    },
+                    "pcty": {
+                        "$ref": "#/components/schemas/VideoPcty"
+                    },
+                    "captions": {
+                        "$ref": "#/components/schemas/VideoCaptions"
+                    },
+                    "summary": {
+                        "$ref": "#/components/schemas/VideoSummary"
+                    },
+                    "token_key": {
+                        "$ref": "#/components/schemas/VideoTokenKey"
+                    },
+                    "events": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/VideoEvent"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "VideoPcty": {
+                "description": "Pcty reference data",
+                "properties": {
+                    "pcty_owner": {
+                        "description": "Paylocity owner information",
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "pcty_id": {
+                                    "type": "string"
+                                },
+                                "pcty_co": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "pcty_environment": {
+                        "description": "Paylocity envinronment",
+                        "type": "string"
+                    },
+                    "pcty_video_references": {
+                        "description": "Paylocity video references. To know if a video has been uploaded or inserted somewhere",
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "pcty_product": {
+                                    "type": "string"
+                                },
+                                "pcty_type": {
+                                    "type": "string"
+                                },
+                                "created_at": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "VideoSummary": {
+                "description": "A summary of analytics on a video",
+                "required": [
+                    "plays"
+                ],
+                "properties": {
+                    "plays": {
+                        "description": "Grants view permissions",
+                        "type": "number"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "responses": {
+            "NoContent": {
+                "description": "No Content",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "A message explaining what went wrong",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "Unauthorized": {
+                "description": "Unauthorized",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "A message explaining what went wrong",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "Forbidden": {
+                "description": "Forbidden",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "A message explaining what went wrong",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "NotFound": {
+                "description": "Not Found",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "A message explaining what went wrong",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "ValidationError": {
+                "description": "Validation Error",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "A message explaining what went wrong",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "InternalServerError": {
+                "description": "Internal Server Error",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "A message explaining what went wrong",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearer": {
+                "description": "Bearer Authorization",
+                "in": "header",
+                "name": "bearer",
+                "scheme": "bearer",
+                "type": "http"
+            },
+            "basic": {
+                "description": "Where `username` and `password` are api `key` and `secret`",
+                "in": "header",
+                "name": "basic",
+                "scheme": "basic",
+                "type": "http"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Video",
+            "description": "The Video API allows you to interact with videos on your VidGrid account.",
+            "externalDocs": {
+                "description": "More",
+                "url": "https://developer.vidgrid.com/docs/v2/#video-api"
+            }
+        },
+        {
+            "name": "Caption",
+            "description": "The Caption API allows you to request and manage closed captioning on your Videos.",
+            "externalDocs": {
+                "description": "More",
+                "url": "https://developer.vidgrid.com/docs/v2/#caption-api"
+            }
+        },
+        {
+            "name": "Folder",
+            "description": "The Folder API allows you to interact with folders on your VidGrid account.",
+            "externalDocs": {
+                "description": "More",
+                "url": "https://developer.vidgrid.com/docs/v2/#folder-api"
+            }
+        },
+        {
+            "name": "Search",
+            "description": "The Search API allows you to search for videos."
+        },
+        {
+            "name": "User",
+            "description": "The User API allows you to interact with users on your VidGrid account.",
+            "externalDocs": {
+                "description": "More",
+                "url": "https://developer.vidgrid.com/docs/v2/#user-api"
+            }
+        },
+        {
+            "name": "Token",
+            "description": "The Video Creation Token API allows you to request a token that can be used to record or upload videos into your VidGrid account.",
+            "externalDocs": {
+                "description": "More",
+                "url": "https://developer.vidgrid.com/docs/v2/#video-creation-token-api"
+            }
+        },
+        {
+            "name": "Webhooks",
+            "description": "The Webhook API allows you to trigger webhook events."
+        }
+    ],
+    "externalDocs": {
+        "description": "Full API Documentation",
+        "url": "https://developer.vidgrid.com"
+    },
+    "security": [
+        {
+            "bearer": [],
+            "basic": []
+        }
+    ]
+}

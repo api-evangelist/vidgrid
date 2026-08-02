@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/vidgrid-openapi-original.json
+docs: https://developer.vidgrid.com/docs/v2/
+summary:
+  types:
+  - http
+  primary: HTTP Basic — API key as username, API secret as password, base64-encoded in the Authorization header
+  key_management: https://app.vidgrid.com/integrations
+  availability: API keys are available during a 14-day trial and restricted to Enterprise accounts afterward.
+  key_types: User keys (individual accounts) and Organization keys (organizational accounts) — documented in the v1 reference.
+  client_side: Keys give full permissions to manage account content and must NEVER be exposed client side; mint record/upload tokens (POST /vidgrid/v2/tokens) for client-side capture flows.
+schemes:
+- name: bearer
+  type: http
+  scheme: bearer
+  description: Bearer Authorization
+  sources:
+  - openapi/vidgrid-openapi-original.json
+- name: basic
+  type: http
+  scheme: basic
+  description: Where `username` and `password` are api `key` and `secret`
+  sources:
+  - openapi/vidgrid-openapi-original.json

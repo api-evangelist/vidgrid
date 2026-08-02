@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: searched
+source: live probes of /.well-known/ on VidGrid hosts (www.vidgrid.com, api.vidgrid.com, help.vidgrid.com, developer.vidgrid.com)
+note: >-
+  The only 200 is /.well-known/security.txt on help.vidgrid.com, which is served by
+  Intercom (the help-center host) and is Intercom's own security.txt (Canonical:
+  https://app.intercom.com/.well-known/security.txt) — it is NOT a VidGrid
+  vulnerability-disclosure policy. Recorded for completeness with third_party: intercom.
+hosts:
+- host: https://www.vidgrid.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://api.vidgrid.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://developer.vidgrid.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+- host: https://help.vidgrid.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: vidgrid-help-security.txt
+    third_party: intercom
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}

@@ -1,0 +1,26 @@
+{
+  "provider": "vidgrid",
+  "sources": [
+    "vidgrid-caption-api-openapi.yml",
+    "vidgrid-folder-api-openapi.yml",
+    "vidgrid-search-api-openapi.yml",
+    "vidgrid-token-api-openapi.yml",
+    "vidgrid-user-api-openapi.yml",
+    "vidgrid-video-api-openapi.yml",
+    "vidgrid-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "vidgrid-caption-api-openapi.yml",
+    "vidgrid-folder-api-openapi.yml",
+    "vidgrid-search-api-openapi.yml",
+    "vidgrid-token-api-openapi.yml",
+    "vidgrid-user-api-openapi.yml",
+    "vidgrid-video-api-openapi.yml",
+    "vidgrid-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

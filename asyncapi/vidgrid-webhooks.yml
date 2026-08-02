@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.vidgrid.com/docs/v2/ (Webhooks section)
+type: Webhooks
+note: >-
+  VidGrid documents webhooks but publishes no AsyncAPI specification. This captures the
+  documented webhook catalog verbatim from the v2 API reference; do not treat it as a
+  provider-published AsyncAPI document.
+configuration:
+  settings_url: https://app.vidgrid.com/webhooks
+  extras: >-
+    webhook_extras set when creating a token (POST /vidgrid/v2/tokens) is delivered in
+    the extras field of fired events.
+  replay: POST /vidgrid/v2/webhooks requests a webhook event be fired for a given video.
+payload:
+  fields:
+  - {name: event_type, description: The event type that fired.}
+  - {name: data, description: The resource object (Video or Caption Resource) the event concerns.}
+  - {name: extras, description: Optional custom data attached via webhook_extras.}
+  - {name: token, description: Deprecated field.}
+events:
+- name: VIDEO_UPLOADED
+  resource: video
+  description: A video finished uploading.
+- name: VIDEO_FAILED
+  resource: video
+  description: A video failed processing.
+- name: VIDEO_READY
+  resource: video
+  description: A video is processed and ready.
+- name: CAPTION_REQUESTED
+  resource: caption
+  description: A caption was requested for a video.
+- name: CAPTION_READY
+  resource: caption
+  description: A requested caption is ready.
+- name: CAPTION_FAILED
+  resource: caption
+  description: A caption request failed.

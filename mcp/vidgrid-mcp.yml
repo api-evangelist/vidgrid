@@ -1,0 +1,58 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/vidgrid-openapi-original.json
+note: >-
+  No official VidGrid (Paylocity) MCP server was found in the docs, npm, or the MCP
+  registries. This is a candidate tool list derived from the Content Management API v2
+  operations. The spec publishes no operationIds, so source_operation references use
+  METHOD path form.
+server:
+  name: vidgrid
+  transport: http
+tools:
+- name: retrieve_videos
+  description: Retrieve one or more Video Resources, optionally expanding properties via include[]
+  source_operation: openapi/vidgrid-openapi-original.json#GET /vidgrid/v2/videos/{identifier}
+- name: update_video
+  description: Update properties on a video
+  source_operation: openapi/vidgrid-openapi-original.json#PATCH /vidgrid/v2/videos/{identifier}
+- name: delete_video
+  description: Delete a video (trash for 30 days or permanent)
+  source_operation: openapi/vidgrid-openapi-original.json#DELETE /vidgrid/v2/videos/{identifier}
+- name: retrieve_caption
+  description: Retrieve a caption resource with transcript
+  source_operation: openapi/vidgrid-openapi-original.json#GET /vidgrid/v2/captions/{identifier}
+- name: create_caption
+  description: Request a machine or professional caption for a video
+  source_operation: openapi/vidgrid-openapi-original.json#POST /vidgrid/v2/captions
+- name: delete_caption
+  description: Delete a caption
+  source_operation: openapi/vidgrid-openapi-original.json#DELETE /vidgrid/v2/captions/{identifier}
+- name: retrieve_folder
+  description: Retrieve a folder resource
+  source_operation: openapi/vidgrid-openapi-original.json#GET /vidgrid/v2/folders/{identifier}
+- name: create_folder
+  description: Create a folder
+  source_operation: openapi/vidgrid-openapi-original.json#POST /vidgrid/v2/folders
+- name: update_folder
+  description: Update a folder (title, playlist settings)
+  source_operation: openapi/vidgrid-openapi-original.json#PATCH /vidgrid/v2/folders/{identifier}
+- name: delete_folder
+  description: Delete a folder
+  source_operation: openapi/vidgrid-openapi-original.json#DELETE /vidgrid/v2/folders/{identifier}
+- name: retrieve_user
+  description: Retrieve a user resource
+  source_operation: openapi/vidgrid-openapi-original.json#GET /vidgrid/v2/users/{identifier}
+- name: delete_user
+  description: Delete a user
+  source_operation: openapi/vidgrid-openapi-original.json#DELETE /vidgrid/v2/users/{identifier}
+- name: search_videos
+  description: Search videos (paged via page param, filter[])
+  source_operation: openapi/vidgrid-openapi-original.json#GET /vidgrid/v2/search/{resource}
+- name: create_token
+  description: Create a record, upload, or direct-upload token for the embeddable recorder/uploader
+  source_operation: openapi/vidgrid-openapi-original.json#POST /vidgrid/v2/tokens
+- name: create_webhook_event
+  description: Request a webhook event be fired for a video
+  source_operation: openapi/vidgrid-openapi-original.json#POST /vidgrid/v2/webhooks

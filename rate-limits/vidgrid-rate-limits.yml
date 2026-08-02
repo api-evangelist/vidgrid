@@ -1,0 +1,27 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: VidGrid
+providerId: vidgrid
+generated: '2026-07-21'
+method: searched
+created: '2026-07-21'
+modified: '2026-07-21'
+tags:
+- Rate Limiting
+- Video
+description: >-
+  VidGrid Content Management API v2 rate limits. Requests are rate limited per account,
+  60 requests per minute by default, with the current limit and remaining allowance
+  signaled on every response via X-RateLimit headers.
+sources:
+- https://developer.vidgrid.com/docs/v2/
+headers:
+  limit: X-RateLimit-Limit
+  remaining: X-RateLimit-Remaining
+limits:
+- name: Default API requests
+  scope: account
+  metric: requests_per_minute
+  limit: 60
+  timeFrame: minute

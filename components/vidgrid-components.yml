@@ -1,0 +1,36 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.vidgrid.com/docs/v1/ + https://help.vidgrid.com/ (LMS/embed articles)
+description: >-
+  Client-side and embeddable surfaces VidGrid ships beyond the REST API — iframe
+  recorder/uploader launched via API tokens, video player embeds, oEmbed auto-embed,
+  and the LMS rich-text-editor embed tool.
+families:
+- family: Embedded recorder and uploader
+  components:
+  - name: Record button iframe
+    description: The v1 record-token response includes a ready-to-use recordButtonIframe element that launches the VidGrid Screen Recorder.
+    docs: https://developer.vidgrid.com/docs/v1/
+  - name: Upload iframe
+    description: The v1 upload-token response includes an uploadIframe element that opens the web uploader.
+    docs: https://developer.vidgrid.com/docs/v1/
+  - name: Guest Recorder
+    description: Invite non-VidGrid users to record videos to your account with the Guest Recorder.
+    docs: https://help.vidgrid.com/en/articles/2554067-using-the-guest-recorder
+- family: Video player embeds
+  components:
+  - name: Video embed URL
+    description: Every VideoResource carries an embed_url for iframe embedding; folder playlists expose embed_url as well.
+    docs: https://developer.vidgrid.com/docs/v2/
+  - name: oEmbed auto-embed
+    description: Links auto-embed as players where oEmbed is enabled (documented for Moodle; org maintains moodle-filter_oembed).
+    docs: https://help.vidgrid.com/en/articles/2581024-optional-moodle-lms-setup-oembed
+- family: LMS embed tooling
+  components:
+  - name: VidGrid Embed tool (RCE)
+    description: The VidGrid Embed tool appears in any LMS Rich Text Editor for recording and embedding videos in courses (Canvas, Blackboard, Moodle, D2L via LTI).
+    docs: https://help.vidgrid.com/en/articles/3198806-lms-integration-interface
+loader_libraries:
+- name: player.js
+  description: The org maintains a fork of player.js (control embedded video and audio across providers) used with the VidGrid player.
+  url: https://github.com/ilosvideos/player.js

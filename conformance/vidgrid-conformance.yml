@@ -1,0 +1,37 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/vidgrid-openapi-original.json + https://developer.vidgrid.com/docs/v2/ + https://help.vidgrid.com/ (integration articles)
+standards:
+- id: http-basic-auth
+  conforms: true
+  evidence: OpenAPI securitySchemes declare http basic (key:secret) and http bearer; v2 docs document Basic auth as the primary scheme.
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 security scheme in the OpenAPI and no OAuth documentation.
+- id: oidc
+  conforms: false
+  evidence: No openIdConnect scheme; /.well-known/openid-configuration returns 404 on all hosts.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a proprietary {"message"} envelope, not application/problem+json.
+- id: rate-limit-headers
+  conforms: true
+  evidence: X-RateLimit-Limit and X-RateLimit-Remaining returned on every response (v2 docs).
+- id: pagination
+  conforms: partial
+  evidence: Page-based pagination on the search endpoint only (page parameter); list endpoints are unpaged.
+- id: idempotency
+  conforms: false
+  evidence: No idempotency-key mechanism documented.
+- id: webhooks
+  conforms: true
+  evidence: Six documented webhook event types (VIDEO_* and CAPTION_*) configured at app.vidgrid.com/webhooks; see asyncapi/vidgrid-webhooks.yml.
+- id: lti
+  conforms: true
+  evidence: "VidGrid integrates into all major LMS systems via LTI standards (help.vidgrid.com article 3388493); org repos include lti-1-3-php-library and Blackboard/Canvas/Moodle/D2L integrations."
+- id: oembed
+  conforms: true
+  evidence: oEmbed auto-embed supported for LMS use (help.vidgrid.com article 2581024 Moodle oEmbed setup; ilosvideos/moodle-filter_oembed).
+- id: opensearch
+  conforms: true
+  evidence: v1 docs publish GET https://api.vidgrid.com/opensearch (legacy).

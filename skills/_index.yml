@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: generated
+source: >-
+  Packaged Agent Skills generated from openapi/vidgrid-openapi-original.json and the
+  v2 API reference (https://developer.vidgrid.com/docs/v2/). The spec publishes no
+  operationIds, so operations are referenced as METHOD /path (verified verbatim in the
+  spec); cross-cutting rules cite ../conventions/, ../errors/, ../rate-limits/ and
+  ../asyncapi/vidgrid-webhooks.yml.
+skills:
+- file: vidgrid-manage-videos.md
+  name: Retrieve, update, and delete videos
+  api: openapi/vidgrid-openapi-original.json
+  operations: ['GET /vidgrid/v2/videos/{identifier}', 'PATCH /vidgrid/v2/videos/{identifier}', 'DELETE /vidgrid/v2/videos/{identifier}', 'GET /vidgrid/v2/search/{resource}']
+- file: vidgrid-request-captions.md
+  name: Request and retrieve captions for a video
+  api: openapi/vidgrid-openapi-original.json
+  operations: ['POST /vidgrid/v2/captions', 'GET /vidgrid/v2/captions/{identifier}', 'DELETE /vidgrid/v2/captions/{identifier}']
+- file: vidgrid-record-or-upload-via-token.md
+  name: Record or upload a video via an API token
+  api: openapi/vidgrid-openapi-original.json
+  operations: ['POST /vidgrid/v2/tokens', 'GET /vidgrid/v2/videos/{identifier}', 'POST /vidgrid/v2/webhooks']

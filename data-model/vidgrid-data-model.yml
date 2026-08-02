@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/vidgrid-openapi-original.json (components.schemas $ref links and id-reference fields)
+docs: https://developer.vidgrid.com/docs/v2/
+notation: >-
+  relationships use has_one / has_many / belongs_to with the referencing field name;
+  direction is from the entity that owns the reference.
+entities:
+- {name: Video, schema: VideoResource, domain: content, description: A recorded or uploaded video with view/embed URLs, permissions, thumbnails, JWTs, captions, events, and summary stats.}
+- {name: Caption, schema: CaptionResource, domain: content, description: A machine or professional caption for a video, with language, status, and transcript.}
+- {name: CaptionTranscript, schema: CaptionTranscript, domain: content, description: The transcript body of a caption.}
+- {name: Folder, schema: FolderResource, domain: organization, description: A folder of videos, optionally shared as a playlist.}
+- {name: FolderPlaylist, schema: FolderPlaylist, domain: organization, description: Playlist settings on a folder (enabled, view_url, embed_url).}
+- {name: User, schema: UserResource, domain: identity, description: A VidGrid account user (identifier, email, name).}
+- {name: RecordToken, schema: RecordTokenResource, domain: capture, description: A token that launches the VidGrid Screen Recorder.}
+- {name: UploadToken, schema: UploadTokenResource, domain: capture, description: A token that opens the web uploader.}
+- {name: DirectUploadToken, schema: DirectUploadTokenResource, domain: capture, description: A token plus form attributes for direct file upload.}
+- {name: VideoEvent, schema: VideoEvent, domain: platform, description: An event on a video (type, created_at, payload, user_id).}
+- {name: VideoJwts, schema: VideoJwts, domain: access, description: View/edit/manage JWTs for a video.}
+- {name: VideoMetadata, schema: VideoMetadata, domain: content, description: Duration, filesize, filetype, and dimensions.}
+- {name: VideoThumbnails, schema: VideoThumbnails, domain: content, description: Signed thumbnail URLs.}
+- {name: VideoSummary, schema: VideoSummary, domain: analytics, description: Play-count summary.}
+- {name: UserPcty, schema: UserPcty, domain: paylocity, description: Paylocity employee/company linkage on a user (pcty_employee_id, pcty_company_id).}
+- {name: VideoPcty, schema: VideoPcty, domain: paylocity, description: Paylocity ownership/environment/references on a video.}
+relationships:
+- {from: Video, to: Caption, kind: has_many, via: captions}
+- {from: Video, to: VideoEvent, kind: has_many, via: events}
+- {from: Video, to: VideoMetadata, kind: has_one, via: metadata}
+- {from: Video, to: VideoThumbnails, kind: has_one, via: thumbnail}
+- {from: Video, to: VideoJwts, kind: has_one, via: jwt}
+- {from: Video, to: VideoSummary, kind: has_one, via: summary}
+- {from: Video, to: VideoPcty, kind: has_one, via: pcty}
+- {from: Caption, to: Video, kind: belongs_to, via: video_identifier}
+- {from: Caption, to: CaptionTranscript, kind: has_one, via: transcript}
+- {from: Folder, to: FolderPlaylist, kind: has_one, via: playlist}
+- {from: User, to: UserPcty, kind: has_one, via: pcty}
+- {from: RecordToken, to: Video, kind: has_many, via: 'video (properties set on videos created with this token)'}
+- {from: UploadToken, to: Video, kind: has_many, via: 'video (properties set on videos created with this token)'}

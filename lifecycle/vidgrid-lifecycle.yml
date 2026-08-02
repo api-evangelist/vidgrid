@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.vidgrid.com/docs/v2/ + https://developer.vidgrid.com/docs/v1/
+versioning:
+  scheme: uri-path
+  current: v2
+  path_prefix: /vidgrid/v2/
+  docs: https://developer.vidgrid.com/docs/v2/
+  legacy:
+  - version: v1
+    docs: https://developer.vidgrid.com/docs/v1/
+    status: legacy
+    note: The v1 docs banner states "You are viewing an older version of the API" and links to v2; v1 (record/upload tokens, video metadata/file, opensearch) remains published.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No formal deprecation policy or RFC 8594 Sunset support is published.
+sla:
+  url: null
+status_page: null
+deprecated_fields:
+- field: token (webhook payload)
+  note: The v2 webhook payload documents the token field as deprecated.
+context: >-
+  VidGrid was acquired by Paylocity; the API reference contact is
+  videoengineering@paylocity.com and the product is branded "VidGrid by Paylocity".
+  The standalone marketing site has been reduced (terms/pricing/blog pages return 404),
+  while app.vidgrid.com, api.vidgrid.com, developer.vidgrid.com, and help.vidgrid.com
+  remain live.

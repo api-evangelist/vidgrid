@@ -1,7 +1,25 @@
 aid: vidgrid
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/vidgrid.png
 name: VidGrid
-description: VidGrid is a company surfaced as a portfolio company of techstars and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  VidGrid is an enterprise video platform for recording, hosting, captioning, and
+  sharing interactive video, acquired by Paylocity and now branded VidGrid by
+  Paylocity. Its Content Management API v2 is a JSON REST API for managing videos,
+  captions, folders, users, and search on an account, plus record/upload tokens that
+  launch the embeddable screen recorder and uploader, with webhook events for video
+  and caption processing. API keys are Enterprise-restricted after a 14-day trial.
 url: https://raw.githubusercontent.com/api-evangelist/vidgrid/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,10 +29,102 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
-- Company
-apis: []
+- Video
+- Screen Recording
+- Captions
+- Video Hosting
+- Webhooks
+- Training
+- HR
+apis:
+- aid: vidgrid:vidgrid-caption-api
+  name: VidGrid Caption API
+  description: The Caption API allows you to request and manage closed captioning on your Videos.
+  humanURL: https://developer.vidgrid.com/docs/v2/
+  baseURL: https://api.vidgrid.com/ContentManagement
+  tags:
+  - Caption
+  properties:
+  - type: OpenAPI
+    url: openapi/vidgrid-caption-api-openapi.yml
+  - type: APIReference
+    url: https://developer.vidgrid.com/docs/v2/
+- aid: vidgrid:vidgrid-folder-api
+  name: VidGrid Folder API
+  description: The Folder API allows you to interact with folders on your VidGrid account.
+  humanURL: https://developer.vidgrid.com/docs/v2/
+  baseURL: https://api.vidgrid.com/ContentManagement
+  tags:
+  - Folder
+  properties:
+  - type: OpenAPI
+    url: openapi/vidgrid-folder-api-openapi.yml
+  - type: APIReference
+    url: https://developer.vidgrid.com/docs/v2/
+- aid: vidgrid:vidgrid-search-api
+  name: VidGrid Search API
+  description: The Search API allows you to search for videos.
+  humanURL: https://developer.vidgrid.com/docs/v2/
+  baseURL: https://api.vidgrid.com/ContentManagement
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/vidgrid-search-api-openapi.yml
+  - type: APIReference
+    url: https://developer.vidgrid.com/docs/v2/
+- aid: vidgrid:vidgrid-token-api
+  name: VidGrid Token API
+  description: >-
+    The Video Creation Token API allows you to request a token that can be used to record or upload videos
+    into your VidGrid account.
+  humanURL: https://developer.vidgrid.com/docs/v2/
+  baseURL: https://api.vidgrid.com/ContentManagement
+  tags:
+  - Token
+  properties:
+  - type: OpenAPI
+    url: openapi/vidgrid-token-api-openapi.yml
+  - type: APIReference
+    url: https://developer.vidgrid.com/docs/v2/
+- aid: vidgrid:vidgrid-user-api
+  name: VidGrid User API
+  description: The User API allows you to interact with users on your VidGrid account.
+  humanURL: https://developer.vidgrid.com/docs/v2/
+  baseURL: https://api.vidgrid.com/ContentManagement
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/vidgrid-user-api-openapi.yml
+  - type: APIReference
+    url: https://developer.vidgrid.com/docs/v2/
+- aid: vidgrid:vidgrid-video-api
+  name: VidGrid Video API
+  description: The Video API allows you to interact with videos on your VidGrid account.
+  humanURL: https://developer.vidgrid.com/docs/v2/
+  baseURL: https://api.vidgrid.com/ContentManagement
+  tags:
+  - Video
+  properties:
+  - type: OpenAPI
+    url: openapi/vidgrid-video-api-openapi.yml
+  - type: APIReference
+    url: https://developer.vidgrid.com/docs/v2/
+- aid: vidgrid:vidgrid-webhooks-api
+  name: VidGrid Webhooks API
+  description: The Webhook API allows you to trigger webhook events.
+  humanURL: https://developer.vidgrid.com/docs/v2/
+  baseURL: https://api.vidgrid.com/ContentManagement
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/vidgrid-webhooks-api-openapi.yml
+  - type: APIReference
+    url: https://developer.vidgrid.com/docs/v2/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +133,52 @@ maintainers:
 common:
 - type: Website
   url: https://vidgrid.com/
+- type: DeveloperPortal
+  url: https://developer.vidgrid.com/
+- type: Documentation
+  url: https://developer.vidgrid.com/docs/v2/
+- type: APIReference
+  url: https://developer.vidgrid.com/docs/v2/
+- type: GettingStarted
+  url: https://help.vidgrid.com/en/articles/2554249-api-docs-for-developers
+- type: Support
+  url: https://help.vidgrid.com/
+- type: Login
+  url: https://app.vidgrid.com/login
+- type: GitHubOrganization
+  url: https://github.com/ilosvideos
+- type: AgenticAccess
+  url: agentic-access/vidgrid-agentic-access.yml
+- type: Authentication
+  url: authentication/vidgrid-authentication.yml
+- type: DomainSecurity
+  url: security/vidgrid-domain-security.yml
+- type: WellKnown
+  url: well-known/vidgrid-well-known.yml
+- type: LLMsTxt
+  url: llms/vidgrid-llms.txt
+- type: MCPServer
+  url: mcp/vidgrid-mcp.yml
+- type: Conventions
+  url: conventions/vidgrid-conventions.yml
+- type: RateLimits
+  url: rate-limits/vidgrid-rate-limits.yml
+- type: ErrorCatalog
+  url: errors/vidgrid-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/vidgrid-lifecycle.yml
+- type: Conformance
+  url: conformance/vidgrid-conformance.yml
+- type: Webhooks
+  url: asyncapi/vidgrid-webhooks.yml
+- type: Components
+  url: components/vidgrid-components.yml
+- type: DataModel
+  url: data-model/vidgrid-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 17
+  pass: local-v1

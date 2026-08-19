@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VidGrid API Reference Caption User API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vidgrid.com/ContentManagement/vidgrid/v2/users/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "ID of user to return"
+              },
+              {
+                "name": "identifiers[]",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifiers of the desired users. When set, this takes priority over **identifier**."
+              }
+            ]
+          },
+          "docs": "This endpoint returns an array of User Resources."
+        },
+        {
+          "info": {
+            "name": "Delete user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.vidgrid.com/ContentManagement/vidgrid/v2/users/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "ID of user to delete"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint deletes a user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

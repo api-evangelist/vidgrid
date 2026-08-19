@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VidGrid API Reference Caption Folder API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Folder",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vidgrid.com/ContentManagement/vidgrid/v2/folders/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "ID of folder to return"
+              },
+              {
+                "name": "identifiers[]",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifiers of the desired folders. When set, this takes priority over **identifier**."
+              },
+              {
+                "name": "include[]",
+                "value": "",
+                "type": "query",
+                "description": "An array of properties to be included with the returned Folder Resources."
+              }
+            ]
+          },
+          "docs": "This endpoint returns an array of Folder Resources."
+        },
+        {
+          "info": {
+            "name": "Update folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.vidgrid.com/ContentManagement/vidgrid/v2/folders/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "ID of folder to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint updates a folder and then returns it as a Folder Resource."
+        },
+        {
+          "info": {
+            "name": "Delete folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.vidgrid.com/ContentManagement/vidgrid/v2/folders/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "ID of folder to delete"
+              }
+            ]
+          },
+          "docs": "This endpoint deletes a folder."
+        },
+        {
+          "info": {
+            "name": "Create folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.vidgrid.com/ContentManagement/vidgrid/v2/folders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint creates a folder and then returns it as a Folder Resource."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

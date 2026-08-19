@@ -1,0 +1,1276 @@
+{
+  "item": [
+    {
+      "id": "abf943e5-b61e-47dd-b24b-878bed272d6d",
+      "name": "Caption",
+      "description": {
+        "content": "The Caption API allows you to request and manage closed captioning on your Videos.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "88f7eb4f-9028-4aa4-8bb1-b84467dfce79",
+          "name": "Retrieve caption",
+          "request": {
+            "name": "Retrieve caption",
+            "description": {
+              "content": "This endpoint returns an array of Caption Resources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vidgrid",
+                "v2",
+                "captions",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "identifiers[]",
+                  "value": "<string>",
+                  "description": "The unique identifiers of the desired captions. When set, this takes priority over **identifier**."
+                },
+                {
+                  "disabled": false,
+                  "key": "identifiers[]",
+                  "value": "<string>",
+                  "description": "The unique identifiers of the desired captions. When set, this takes priority over **identifier**."
+                },
+                {
+                  "disabled": false,
+                  "key": "include[]",
+                  "value": "<string>",
+                  "description": "An array of properties to be included with the returned Video Resources."
+                },
+                {
+                  "disabled": false,
+                  "key": "include[]",
+                  "value": "<string>",
+                  "description": "An array of properties to be included with the returned Video Resources."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "ID of caption to return"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c1332e1-8cab-4711-8739-5910f8ecd4cf",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "captions",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "ID of caption to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"identifier\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"string\",\n      \"video_identifier\": \"string\",\n      \"language\": \"string\",\n      \"transcript\": \"string\"\n    },\n    {\n      \"identifier\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"string\",\n      \"video_identifier\": \"string\",\n      \"language\": \"string\",\n      \"transcript\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ad5c00c-8605-4668-9b0f-6d482ff9cfc1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "captions",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "ID of caption to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "214c504d-9c18-477b-8662-d149d13d883d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "captions",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "ID of caption to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "781556fc-a2fe-4be2-8ac3-3943c2393340",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "captions",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "ID of caption to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef01d6bb-6d9c-4a1a-a83f-df729747bb93",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "captions",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "ID of caption to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "084ba9ef-460b-47d9-a4c0-118842c3652f",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "captions",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "ID of caption to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c36538ab-7f88-4c02-a634-ef9a61531899",
+          "name": "Delete caption",
+          "request": {
+            "name": "Delete caption",
+            "description": {
+              "content": "This endpoint deletes a caption.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vidgrid",
+                "v2",
+                "captions",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) ID of caption to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "25d86656-d869-41d7-8ff5-3a2319b7d675",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "captions",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) ID of caption to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43ed4122-9512-468d-9844-a11b3b1cb519",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "captions",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) ID of caption to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c2543f7-5b56-4da9-a67a-7bf382df8841",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "captions",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) ID of caption to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12e39c62-99c4-45ea-bde0-5d86b42494a7",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "captions",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) ID of caption to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c7c76e9-dac9-4ab1-966e-d9f9b95af5e2",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "captions",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) ID of caption to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fce19a08-90bf-4d66-b095-cb244a07c3ca",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "captions",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) ID of caption to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3dc729f-eed1-4579-bf00-0e00e83a5dee",
+          "name": "Create caption",
+          "request": {
+            "name": "Create caption",
+            "description": {
+              "content": "This endpoint makes a caption request for a Video Resource. It returns a Caption Resource with a status but the caption will not be ready immediately.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vidgrid",
+                "v2",
+                "captions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"video_identifier\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "18b1bfdb-f438-4c2b-806a-1ea46d5ba571",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "captions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"video_identifier\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"identifier\": \"string\",\n    \"type\": \"string\",\n    \"status\": \"string\",\n    \"video_identifier\": \"string\",\n    \"language\": \"string\",\n    \"transcript\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c31a146b-9d9c-4d70-b02c-0e1807605f52",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "captions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"video_identifier\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13fb5121-4f16-4e8f-86fb-265ee04c3346",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "captions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"video_identifier\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cadbfa46-bc9d-4121-85d8-001077d71d2e",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "captions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"video_identifier\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07e0ac8f-b687-417f-8d04-e39abb57b939",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "captions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"video_identifier\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8193fcc-6b13-4e66-8509-23511f19240f",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "captions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"video_identifier\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vidgrid.com/ContentManagement",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5de6630c-3809-46ea-a1b5-e52f34222529",
+    "name": "VidGrid API Reference Caption API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the VidGrid [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API!<br/><br/>You can use this API to create and manage resources on your VidGrid account. The API is meant to be used server-side and all requests should be made over SSL.<br/><br/>Code examples can be viewed in the area to the right, and you can switch the language of the examples with the tabs in the top right.\n\nContact Support:\n Name: API Support\n Email: videoengineering@paylocity.com?subject=API Inquiry",
+      "type": "text/plain"
+    }
+  }
+}

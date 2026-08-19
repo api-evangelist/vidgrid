@@ -1,0 +1,409 @@
+{
+  "item": [
+    {
+      "id": "567ae83b-ed7b-4a06-abc3-f01bc1cb7db7",
+      "name": "Token",
+      "description": {
+        "content": "The Video Creation Token API allows you to request a token that can be used to record or upload videos into your VidGrid account.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7655203c-6349-486f-94d5-3de88fc810e6",
+          "name": "Create token",
+          "request": {
+            "name": "Create token",
+            "description": {
+              "content": "This endpoint generates and returns a Token Resource that can be used for creating videos.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vidgrid",
+                "v2",
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"video\": {\n    \"title\": \"<string>\",\n    \"public\": \"<boolean>\",\n    \"folder\": \"<string>\"\n  },\n  \"recorder\": {\n    \"auto_show_video_page\": false,\n    \"auto_close_recorder\": false,\n    \"hide_video_title_input\": false,\n    \"default_fullscreen\": false,\n    \"force_webcam_only\": false,\n    \"on_install\": {\n      \"auto_authenticate\": true,\n      \"show_instructions_page\": false\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7e2bf96c-56b6-4fb6-9c0c-86871b7d5781",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"video\": {\n    \"title\": \"<string>\",\n    \"public\": \"<boolean>\",\n    \"folder\": \"<string>\"\n  },\n  \"recorder\": {\n    \"auto_show_video_page\": false,\n    \"auto_close_recorder\": false,\n    \"hide_video_title_input\": false,\n    \"default_fullscreen\": false,\n    \"force_webcam_only\": false,\n    \"on_install\": {\n      \"auto_authenticate\": true,\n      \"show_instructions_page\": false\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"token\": \"string\",\n    \"token_key\": \"string\",\n    \"expires\": \"string\",\n    \"recorder\": {\n      \"download_url\": \"string\",\n      \"launch_uri\": \"string\",\n      \"iframe_button\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc10da22-2f6e-45dd-b2c7-a449850bbfca",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"video\": {\n    \"title\": \"<string>\",\n    \"public\": \"<boolean>\",\n    \"folder\": \"<string>\"\n  },\n  \"recorder\": {\n    \"auto_show_video_page\": false,\n    \"auto_close_recorder\": false,\n    \"hide_video_title_input\": false,\n    \"default_fullscreen\": false,\n    \"force_webcam_only\": false,\n    \"on_install\": {\n      \"auto_authenticate\": true,\n      \"show_instructions_page\": false\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "218e7fd1-9ebc-4d7b-9351-c03c3a512489",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"video\": {\n    \"title\": \"<string>\",\n    \"public\": \"<boolean>\",\n    \"folder\": \"<string>\"\n  },\n  \"recorder\": {\n    \"auto_show_video_page\": false,\n    \"auto_close_recorder\": false,\n    \"hide_video_title_input\": false,\n    \"default_fullscreen\": false,\n    \"force_webcam_only\": false,\n    \"on_install\": {\n      \"auto_authenticate\": true,\n      \"show_instructions_page\": false\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17a1db98-887f-440c-b077-d2f9b831557d",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"video\": {\n    \"title\": \"<string>\",\n    \"public\": \"<boolean>\",\n    \"folder\": \"<string>\"\n  },\n  \"recorder\": {\n    \"auto_show_video_page\": false,\n    \"auto_close_recorder\": false,\n    \"hide_video_title_input\": false,\n    \"default_fullscreen\": false,\n    \"force_webcam_only\": false,\n    \"on_install\": {\n      \"auto_authenticate\": true,\n      \"show_instructions_page\": false\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05497d22-b623-4a4a-a6da-ae2b2512ea50",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"video\": {\n    \"title\": \"<string>\",\n    \"public\": \"<boolean>\",\n    \"folder\": \"<string>\"\n  },\n  \"recorder\": {\n    \"auto_show_video_page\": false,\n    \"auto_close_recorder\": false,\n    \"hide_video_title_input\": false,\n    \"default_fullscreen\": false,\n    \"force_webcam_only\": false,\n    \"on_install\": {\n      \"auto_authenticate\": true,\n      \"show_instructions_page\": false\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48658357-e0c1-496e-93b5-0967907f1a3b",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"video\": {\n    \"title\": \"<string>\",\n    \"public\": \"<boolean>\",\n    \"folder\": \"<string>\"\n  },\n  \"recorder\": {\n    \"auto_show_video_page\": false,\n    \"auto_close_recorder\": false,\n    \"hide_video_title_input\": false,\n    \"default_fullscreen\": false,\n    \"force_webcam_only\": false,\n    \"on_install\": {\n      \"auto_authenticate\": true,\n      \"show_instructions_page\": false\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vidgrid.com/ContentManagement",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4b63a1d6-dc01-4ade-ac19-67a719cd90df",
+    "name": "VidGrid API Reference Caption Token API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the VidGrid [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API!<br/><br/>You can use this API to create and manage resources on your VidGrid account. The API is meant to be used server-side and all requests should be made over SSL.<br/><br/>Code examples can be viewed in the area to the right, and you can switch the language of the examples with the tabs in the top right.\n\nContact Support:\n Name: API Support\n Email: videoengineering@paylocity.com?subject=API Inquiry",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1400 @@
+{
+  "item": [
+    {
+      "id": "b5882832-1a0a-4753-947b-cf0f0ee94166",
+      "name": "Video",
+      "description": {
+        "content": "The Video API allows you to interact with videos on your VidGrid account.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f70cf7a8-a4b9-4b79-8b31-2e2905f9a92f",
+          "name": "Retrieve videos",
+          "request": {
+            "name": "Retrieve videos",
+            "description": {
+              "content": "This endpoint returns an array of Video Resources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vidgrid",
+                "v2",
+                "videos",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "identifiers[]",
+                  "value": "<string>",
+                  "description": "The unique identifiers of the desired videos. When set, this takes priority over **identifier**."
+                },
+                {
+                  "disabled": false,
+                  "key": "identifiers[]",
+                  "value": "<string>",
+                  "description": "The unique identifiers of the desired videos. When set, this takes priority over **identifier**."
+                },
+                {
+                  "disabled": false,
+                  "key": "include[]",
+                  "value": "<string>",
+                  "description": "An array of properties to be included with the returned Video Resources."
+                },
+                {
+                  "disabled": false,
+                  "key": "include[]",
+                  "value": "<string>",
+                  "description": "An array of properties to be included with the returned Video Resources."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "ID of video to return"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca6b1cd1-9687-4aac-8b72-17d1aae6ea1f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "videos",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "ID of video to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"identifier\": \"string\",\n      \"title\": \"string\",\n      \"view_url\": \"string\",\n      \"embed_url\": \"string\",\n      \"view_permissions\": \"string\",\n      \"signed_url\": \"string\",\n      \"metadata\": {\n        \"duration\": 2992.5237912648795,\n        \"filesize\": 8286,\n        \"filetype\": \"string\",\n        \"height\": 724,\n        \"width\": 3224\n      },\n      \"thumbnail\": {\n        \"signed_url\": \"string\",\n        \"signed_url_small\": \"string\"\n      },\n      \"jwt\": {\n        \"view\": \"string\",\n        \"edit\": \"string\",\n        \"manage\": \"string\"\n      },\n      \"pcty\": {\n        \"pcty_owner\": [\n          {\n            \"pcty_id\": \"string\",\n            \"pcty_co\": \"string\"\n          },\n          {\n            \"pcty_id\": \"string\",\n            \"pcty_co\": \"string\"\n          }\n        ],\n        \"pcty_environment\": \"string\",\n        \"pcty_video_references\": [\n          {\n            \"pcty_product\": \"string\",\n            \"pcty_type\": \"string\",\n            \"created_at\": \"string\"\n          },\n          {\n            \"pcty_product\": \"string\",\n            \"pcty_type\": \"string\",\n            \"created_at\": \"string\"\n          }\n        ]\n      },\n      \"captions\": [\n        {\n          \"identifier\": \"string\",\n          \"type\": \"string\",\n          \"status\": \"string\",\n          \"video_identifier\": \"string\",\n          \"language\": \"string\",\n          \"transcript\": \"string\"\n        },\n        {\n          \"identifier\": \"string\",\n          \"type\": \"string\",\n          \"status\": \"string\",\n          \"video_identifier\": \"string\",\n          \"language\": \"string\",\n          \"transcript\": \"string\"\n        }\n      ],\n      \"summary\": {\n        \"plays\": 1184.3954943671863\n      },\n      \"token_key\": \"string\",\n      \"events\": [\n        {\n          \"type\": \"string\",\n          \"created_at\": \"string\",\n          \"payload\": [],\n          \"user_id\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"created_at\": \"string\",\n          \"payload\": [],\n          \"user_id\": \"string\"\n        }\n      ]\n    },\n    {\n      \"identifier\": \"string\",\n      \"title\": \"string\",\n      \"view_url\": \"string\",\n      \"embed_url\": \"string\",\n      \"view_permissions\": \"string\",\n      \"signed_url\": \"string\",\n      \"metadata\": {\n        \"duration\": 3694.121006393436,\n        \"filesize\": 5347,\n        \"filetype\": \"string\",\n        \"height\": 2954,\n        \"width\": 4974\n      },\n      \"thumbnail\": {\n        \"signed_url\": \"string\",\n        \"signed_url_small\": \"string\"\n      },\n      \"jwt\": {\n        \"view\": \"string\",\n        \"edit\": \"string\",\n        \"manage\": \"string\"\n      },\n      \"pcty\": {\n        \"pcty_owner\": [\n          {\n            \"pcty_id\": \"string\",\n            \"pcty_co\": \"string\"\n          },\n          {\n            \"pcty_id\": \"string\",\n            \"pcty_co\": \"string\"\n          }\n        ],\n        \"pcty_environment\": \"string\",\n        \"pcty_video_references\": [\n          {\n            \"pcty_product\": \"string\",\n            \"pcty_type\": \"string\",\n            \"created_at\": \"string\"\n          },\n          {\n            \"pcty_product\": \"string\",\n            \"pcty_type\": \"string\",\n            \"created_at\": \"string\"\n          }\n        ]\n      },\n      \"captions\": [\n        {\n          \"identifier\": \"string\",\n          \"type\": \"string\",\n          \"status\": \"string\",\n          \"video_identifier\": \"string\",\n          \"language\": \"string\",\n          \"transcript\": \"string\"\n        },\n        {\n          \"identifier\": \"string\",\n          \"type\": \"string\",\n          \"status\": \"string\",\n          \"video_identifier\": \"string\",\n          \"language\": \"string\",\n          \"transcript\": \"string\"\n        }\n      ],\n      \"summary\": {\n        \"plays\": 4615.968500881914\n      },\n      \"token_key\": \"string\",\n      \"events\": [\n        {\n          \"type\": \"string\",\n          \"created_at\": \"string\",\n          \"payload\": [],\n          \"user_id\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"created_at\": \"string\",\n          \"payload\": [],\n          \"user_id\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d8facce-3d83-4445-9243-95ce1f953396",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "videos",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "ID of video to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b2dcbd3-45e4-4f30-8867-c165a370d59f",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "videos",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "ID of video to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13f2c914-8154-4233-858b-325e3e439419",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "videos",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "ID of video to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b59d5d2-730c-41f6-a503-faa9b7c3825a",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "videos",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "ID of video to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "138db26c-753b-4bba-b38a-9f79f9f908ec",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "videos",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifiers[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "ID of video to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f333258-649d-46dc-a8b0-4558187bcbe1",
+          "name": "Delete video",
+          "request": {
+            "name": "Delete video",
+            "description": {
+              "content": "This endpoint deletes a video.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vidgrid",
+                "v2",
+                "videos",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) ID of video to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trash\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e04aa853-ee49-4292-a3a6-dc0dccd53229",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "videos",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) ID of video to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trash\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "805fa51f-8ec9-465b-a122-905b089abddd",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "videos",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) ID of video to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trash\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51fedd0c-f0ae-42f9-bb9a-5cdf5a4fe7ce",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "videos",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) ID of video to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trash\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d091fa0a-28b1-40f8-bddb-0993ab2ca210",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "videos",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) ID of video to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trash\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74a79e61-a88b-4b80-9eeb-6662856ea297",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "videos",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) ID of video to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trash\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73c3485f-9afa-48b1-b0a4-d2094abf7fcb",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "videos",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) ID of video to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trash\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4047e97e-735b-47b4-b631-e347591ac491",
+          "name": "Update video",
+          "request": {
+            "name": "Update video",
+            "description": {
+              "content": "This endpoint updates a video and then returns it as a Video Resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vidgrid",
+                "v2",
+                "videos",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) ID of video to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"properties\": {\n    \"title\": \"<string>\",\n    \"view_permissions\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "675f6e6e-0ae4-4005-a8f4-2239eac3c46e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "videos",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) ID of video to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"title\": \"<string>\",\n    \"view_permissions\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"identifier\": \"string\",\n    \"title\": \"string\",\n    \"view_url\": \"string\",\n    \"embed_url\": \"string\",\n    \"view_permissions\": \"string\",\n    \"signed_url\": \"string\",\n    \"metadata\": {\n      \"duration\": 689.3813260905935,\n      \"filesize\": 2336,\n      \"filetype\": \"string\",\n      \"height\": 720,\n      \"width\": 4576\n    },\n    \"thumbnail\": {\n      \"signed_url\": \"string\",\n      \"signed_url_small\": \"string\"\n    },\n    \"jwt\": {\n      \"view\": \"string\",\n      \"edit\": \"string\",\n      \"manage\": \"string\"\n    },\n    \"pcty\": {\n      \"pcty_owner\": [\n        {\n          \"pcty_id\": \"string\",\n          \"pcty_co\": \"string\"\n        },\n        {\n          \"pcty_id\": \"string\",\n          \"pcty_co\": \"string\"\n        }\n      ],\n      \"pcty_environment\": \"string\",\n      \"pcty_video_references\": [\n        {\n          \"pcty_product\": \"string\",\n          \"pcty_type\": \"string\",\n          \"created_at\": \"string\"\n        },\n        {\n          \"pcty_product\": \"string\",\n          \"pcty_type\": \"string\",\n          \"created_at\": \"string\"\n        }\n      ]\n    },\n    \"captions\": [\n      {\n        \"identifier\": \"string\",\n        \"type\": \"string\",\n        \"status\": \"string\",\n        \"video_identifier\": \"string\",\n        \"language\": \"string\",\n        \"transcript\": \"string\"\n      },\n      {\n        \"identifier\": \"string\",\n        \"type\": \"string\",\n        \"status\": \"string\",\n        \"video_identifier\": \"string\",\n        \"language\": \"string\",\n        \"transcript\": \"string\"\n      }\n    ],\n    \"summary\": {\n      \"plays\": 2594.556158403012\n    },\n    \"token_key\": \"string\",\n    \"events\": [\n      {\n        \"type\": \"string\",\n        \"created_at\": \"string\",\n        \"payload\": [],\n        \"user_id\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"created_at\": \"string\",\n        \"payload\": [],\n        \"user_id\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c49b2b6c-c9ba-46d1-80a8-088be1100adc",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "videos",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) ID of video to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"title\": \"<string>\",\n    \"view_permissions\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d29efdc6-af85-44c2-8c73-d00683126635",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "videos",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) ID of video to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"title\": \"<string>\",\n    \"view_permissions\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f457120e-8b14-4b2c-8b79-161d83f44e34",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "videos",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) ID of video to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"title\": \"<string>\",\n    \"view_permissions\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9ec3b9e-7ed8-4ff1-b9f4-4e6c423a4e01",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "videos",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) ID of video to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"title\": \"<string>\",\n    \"view_permissions\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e2be1b8-bc7e-4304-9326-449cdbef3c25",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "videos",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) ID of video to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"title\": \"<string>\",\n    \"view_permissions\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vidgrid.com/ContentManagement",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4b34b06a-b5c2-41ad-83bf-700dd2d43014",
+    "name": "VidGrid API Reference Caption Video API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the VidGrid [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API!<br/><br/>You can use this API to create and manage resources on your VidGrid account. The API is meant to be used server-side and all requests should be made over SSL.<br/><br/>Code examples can be viewed in the area to the right, and you can switch the language of the examples with the tabs in the top right.\n\nContact Support:\n Name: API Support\n Email: videoengineering@paylocity.com?subject=API Inquiry",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VidGrid API Reference Caption Webhooks API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create webhook event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.vidgrid.com/ContentManagement/vidgrid/v2/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint creates a webhook event."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

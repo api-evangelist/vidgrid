@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VidGrid API Reference Caption Token API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Token",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.vidgrid.com/ContentManagement/vidgrid/v2/tokens",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint generates and returns a Token Resource that can be used for creating videos."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

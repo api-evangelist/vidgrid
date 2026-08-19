@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VidGrid API Reference Caption API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Caption",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve caption",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vidgrid.com/ContentManagement/vidgrid/v2/captions/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "ID of caption to return"
+              },
+              {
+                "name": "identifiers[]",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifiers of the desired captions. When set, this takes priority over **identifier**."
+              },
+              {
+                "name": "include[]",
+                "value": "",
+                "type": "query",
+                "description": "An array of properties to be included with the returned Video Resources."
+              }
+            ]
+          },
+          "docs": "This endpoint returns an array of Caption Resources."
+        },
+        {
+          "info": {
+            "name": "Delete caption",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.vidgrid.com/ContentManagement/vidgrid/v2/captions/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "ID of caption to delete"
+              }
+            ]
+          },
+          "docs": "This endpoint deletes a caption."
+        },
+        {
+          "info": {
+            "name": "Create caption",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.vidgrid.com/ContentManagement/vidgrid/v2/captions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint makes a caption request for a Video Resource. It returns a Caption Resource with a status but the caption will not be ready immediately."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

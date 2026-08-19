@@ -2,11 +2,9 @@ generated: '2026-07-21'
 method: derived
 status: candidate
 source: openapi/vidgrid-openapi-original.json
-note: >-
-  No official VidGrid (Paylocity) MCP server was found in the docs, npm, or the MCP
-  registries. This is a candidate tool list derived from the Content Management API v2
-  operations. The spec publishes no operationIds, so source_operation references use
-  METHOD path form.
+note: No official VidGrid (Paylocity) MCP server was found in the docs, npm, or the MCP registries. This
+  is a candidate tool list derived from the Content Management API v2 operations. The spec publishes no
+  operationIds, so source_operation references use METHOD path form.
 server:
   name: vidgrid
   transport: http
@@ -56,3 +54,9 @@ tools:
 - name: create_webhook_event
   description: Request a webhook event be fired for a video
   source_operation: openapi/vidgrid-openapi-original.json#POST /vidgrid/v2/webhooks
+deployment:
+  mode: none
+  verified: derived
+  tools: 15
+  checked: '2026-08-12'
+  source: catalog MCP census

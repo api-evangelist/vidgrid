@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VidGrid API Reference Caption Video API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Video",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve videos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vidgrid.com/ContentManagement/vidgrid/v2/videos/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "ID of video to return"
+              },
+              {
+                "name": "identifiers[]",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifiers of the desired videos. When set, this takes priority over **identifier**."
+              },
+              {
+                "name": "include[]",
+                "value": "",
+                "type": "query",
+                "description": "An array of properties to be included with the returned Video Resources."
+              }
+            ]
+          },
+          "docs": "This endpoint returns an array of Video Resources."
+        },
+        {
+          "info": {
+            "name": "Update video",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.vidgrid.com/ContentManagement/vidgrid/v2/videos/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "ID of video to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint updates a video and then returns it as a Video Resource."
+        },
+        {
+          "info": {
+            "name": "Delete video",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.vidgrid.com/ContentManagement/vidgrid/v2/videos/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "ID of video to delete"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint deletes a video."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

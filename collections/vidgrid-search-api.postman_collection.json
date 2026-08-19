@@ -1,0 +1,508 @@
+{
+  "item": [
+    {
+      "id": "fdc4e387-d702-45ba-bea8-7bd6e1993f40",
+      "name": "Search",
+      "description": {
+        "content": "The Search API allows you to search for videos.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "127b0ac3-ce45-4649-b700-9468326114f7",
+          "name": "Search videos",
+          "request": {
+            "name": "Search videos",
+            "description": {
+              "content": "This endpoint returns a list of videos by page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vidgrid",
+                "v2",
+                "search",
+                ":resource"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<int32>",
+                  "description": "(Required) Page number to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[]",
+                  "value": "<string>",
+                  "description": "(Required) Filter to use"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[]",
+                  "value": "<string>",
+                  "description": "(Required) Filter to use"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource",
+                  "description": "(Required) Resource to search for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df6b2f76-1a01-400d-9ffa-25a18755fac3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "search",
+                    ":resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource",
+                      "description": "(Required) Resource to search for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"current_page\": 8627.886255322004,\n  \"data\": [\n    {\n      \"identifier\": \"string\",\n      \"title\": \"string\",\n      \"view_url\": \"string\",\n      \"embed_url\": \"string\",\n      \"view_permissions\": \"string\",\n      \"signed_url\": \"string\",\n      \"metadata\": {\n        \"duration\": 9149.848365349413,\n        \"filesize\": 174,\n        \"filetype\": \"string\",\n        \"height\": 3930,\n        \"width\": 4117\n      },\n      \"thumbnail\": {\n        \"signed_url\": \"string\",\n        \"signed_url_small\": \"string\"\n      },\n      \"jwt\": {\n        \"view\": \"string\",\n        \"edit\": \"string\",\n        \"manage\": \"string\"\n      },\n      \"pcty\": {\n        \"pcty_owner\": [\n          {\n            \"pcty_id\": \"string\",\n            \"pcty_co\": \"string\"\n          },\n          {\n            \"pcty_id\": \"string\",\n            \"pcty_co\": \"string\"\n          }\n        ],\n        \"pcty_environment\": \"string\",\n        \"pcty_video_references\": [\n          {\n            \"pcty_product\": \"string\",\n            \"pcty_type\": \"string\",\n            \"created_at\": \"string\"\n          },\n          {\n            \"pcty_product\": \"string\",\n            \"pcty_type\": \"string\",\n            \"created_at\": \"string\"\n          }\n        ]\n      },\n      \"captions\": [\n        {\n          \"identifier\": \"string\",\n          \"type\": \"string\",\n          \"status\": \"string\",\n          \"video_identifier\": \"string\",\n          \"language\": \"string\",\n          \"transcript\": \"string\"\n        },\n        {\n          \"identifier\": \"string\",\n          \"type\": \"string\",\n          \"status\": \"string\",\n          \"video_identifier\": \"string\",\n          \"language\": \"string\",\n          \"transcript\": \"string\"\n        }\n      ],\n      \"summary\": {\n        \"plays\": 9020.154042746874\n      },\n      \"token_key\": \"string\",\n      \"events\": [\n        {\n          \"type\": \"string\",\n          \"created_at\": \"string\",\n          \"payload\": [],\n          \"user_id\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"created_at\": \"string\",\n          \"payload\": [],\n          \"user_id\": \"string\"\n        }\n      ]\n    },\n    {\n      \"identifier\": \"string\",\n      \"title\": \"string\",\n      \"view_url\": \"string\",\n      \"embed_url\": \"string\",\n      \"view_permissions\": \"string\",\n      \"signed_url\": \"string\",\n      \"metadata\": {\n        \"duration\": 5992.646583035065,\n        \"filesize\": 2295,\n        \"filetype\": \"string\",\n        \"height\": 3768,\n        \"width\": 9787\n      },\n      \"thumbnail\": {\n        \"signed_url\": \"string\",\n        \"signed_url_small\": \"string\"\n      },\n      \"jwt\": {\n        \"view\": \"string\",\n        \"edit\": \"string\",\n        \"manage\": \"string\"\n      },\n      \"pcty\": {\n        \"pcty_owner\": [\n          {\n            \"pcty_id\": \"string\",\n            \"pcty_co\": \"string\"\n          },\n          {\n            \"pcty_id\": \"string\",\n            \"pcty_co\": \"string\"\n          }\n        ],\n        \"pcty_environment\": \"string\",\n        \"pcty_video_references\": [\n          {\n            \"pcty_product\": \"string\",\n            \"pcty_type\": \"string\",\n            \"created_at\": \"string\"\n          },\n          {\n            \"pcty_product\": \"string\",\n            \"pcty_type\": \"string\",\n            \"created_at\": \"string\"\n          }\n        ]\n      },\n      \"captions\": [\n        {\n          \"identifier\": \"string\",\n          \"type\": \"string\",\n          \"status\": \"string\",\n          \"video_identifier\": \"string\",\n          \"language\": \"string\",\n          \"transcript\": \"string\"\n        },\n        {\n          \"identifier\": \"string\",\n          \"type\": \"string\",\n          \"status\": \"string\",\n          \"video_identifier\": \"string\",\n          \"language\": \"string\",\n          \"transcript\": \"string\"\n        }\n      ],\n      \"summary\": {\n        \"plays\": 9424.753123229706\n      },\n      \"token_key\": \"string\",\n      \"events\": [\n        {\n          \"type\": \"string\",\n          \"created_at\": \"string\",\n          \"payload\": [],\n          \"user_id\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"created_at\": \"string\",\n          \"payload\": [],\n          \"user_id\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"first_page_url\": \"string\",\n  \"from\": 3623.570787388397,\n  \"last_page\": 9640.259016951142,\n  \"last_page_url\": \"string\",\n  \"links\": [\n    {\n      \"url\": \"string\",\n      \"label\": \"string\",\n      \"active\": true\n    },\n    {\n      \"url\": \"string\",\n      \"label\": \"string\",\n      \"active\": false\n    }\n  ],\n  \"next_page_url\": \"string\",\n  \"path\": \"string\",\n  \"per_page\": 3587.7601299201024,\n  \"prev_page_url\": \"string\",\n  \"to\": 4207.628217006834,\n  \"total\": 2170.5830435137273\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e73269e4-4119-42df-9ff8-4dec0a727a92",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "search",
+                    ":resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource",
+                      "description": "(Required) Resource to search for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59b0b9d9-5a69-4d52-81ce-6222bf2c3927",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "search",
+                    ":resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource",
+                      "description": "(Required) Resource to search for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c5a55b2-ddd1-40e4-b2bb-de0880add93c",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "search",
+                    ":resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource",
+                      "description": "(Required) Resource to search for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d9cf40b-c5e5-4017-b9cd-75c5bded1941",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "search",
+                    ":resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource",
+                      "description": "(Required) Resource to search for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8d795b6-40a6-4eb9-b816-805c2be1588e",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vidgrid",
+                    "v2",
+                    "search",
+                    ":resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource",
+                      "description": "(Required) Resource to search for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vidgrid.com/ContentManagement",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "efcd00a4-30eb-4ee5-818f-1222bd594a08",
+    "name": "VidGrid API Reference Caption Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the VidGrid [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API!<br/><br/>You can use this API to create and manage resources on your VidGrid account. The API is meant to be used server-side and all requests should be made over SSL.<br/><br/>Code examples can be viewed in the area to the right, and you can switch the language of the examples with the tabs in the top right.\n\nContact Support:\n Name: API Support\n Email: videoengineering@paylocity.com?subject=API Inquiry",
+      "type": "text/plain"
+    }
+  }
+}

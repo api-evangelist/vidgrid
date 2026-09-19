@@ -51,7 +51,7 @@ tags:
 - Video Hosting
 - Webhook
 - Training
-- HR
+- Human Resources
 tags_raw:
 - Video
 - Screen Recording
@@ -105,6 +105,8 @@ apis:
   humanURL: https://developer.vidgrid.com/docs/v2/
   baseURL: https://api.vidgrid.com/ContentManagement
   tags:
+  - Tokens
+  tags_raw:
   - Token
   properties:
   - type: OpenAPI

@@ -1,13 +1,7 @@
 {
   "provider": "vidgrid",
   "sources": [
-    "vidgrid-caption-api-openapi.yml",
-    "vidgrid-folder-api-openapi.yml",
-    "vidgrid-search-api-openapi.yml",
-    "vidgrid-token-api-openapi.yml",
-    "vidgrid-user-api-openapi.yml",
-    "vidgrid-video-api-openapi.yml",
-    "vidgrid-webhooks-api-openapi.yml"
+    "_original/vidgrid-openapi-original.json"
   ],
   "outputs": [
     "vidgrid-caption-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "vidgrid-openapi-original.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "vidgrid-caption-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vidgrid-folder-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vidgrid-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vidgrid-token-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vidgrid-user-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vidgrid-video-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vidgrid-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

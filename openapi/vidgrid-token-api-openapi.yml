@@ -124,35 +124,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    UploadTokenResource:
-      title: Upload Token Resource
-      description: The Upload Token Resource returned in a successful response.
-      required:
-      - token
-      - token_key
-      - expires
-      - uploader
-      properties:
-        token:
-          description: One-time token that is used for authentication when uploading a video.
-          type: string
-        token_key:
-          description: Public identifier corresponding to the token.
-          type: string
-        expires:
-          description: UNIX Timestamp (UTC) indicating when the temporary token will expire.
-          type: string
-          format: timestamp
-        uploader:
-          properties:
-            iframe:
-              description: Iframe containing a simple upload dropzone.
-              type: string
-            iframe_basic:
-              description: Iframe containing a simple upload button.
-              type: string
-          type: object
-      type: object
     DirectUploadTokenResource:
       title: Direct Upload Token Resource
       description: The Direct Upload Token Resource returned in a successful response.
@@ -239,7 +210,56 @@ components:
               type: string
           type: object
       type: object
+    UploadTokenResource:
+      title: Upload Token Resource
+      description: The Upload Token Resource returned in a successful response.
+      required:
+      - token
+      - token_key
+      - expires
+      - uploader
+      properties:
+        token:
+          description: One-time token that is used for authentication when uploading a video.
+          type: string
+        token_key:
+          description: Public identifier corresponding to the token.
+          type: string
+        expires:
+          description: UNIX Timestamp (UTC) indicating when the temporary token will expire.
+          type: string
+          format: timestamp
+        uploader:
+          properties:
+            iframe:
+              description: Iframe containing a simple upload dropzone.
+              type: string
+            iframe_basic:
+              description: Iframe containing a simple upload button.
+              type: string
+          type: object
+      type: object
   responses:
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
     InternalServerError:
       description: Internal Server Error
       content:
@@ -260,28 +280,8 @@ components:
                 description: A message explaining what went wrong
                 type: string
             type: object
-    NotFound:
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            properties:
-              message:
-                description: A message explaining what went wrong
-                type: string
-            type: object
     ValidationError:
       description: Validation Error
-      content:
-        application/json:
-          schema:
-            properties:
-              message:
-                description: A message explaining what went wrong
-                type: string
-            type: object
-    Forbidden:
-      description: Forbidden
       content:
         application/json:
           schema:

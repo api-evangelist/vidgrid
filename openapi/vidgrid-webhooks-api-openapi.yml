@@ -72,6 +72,26 @@ paths:
       x-operation-id-source: derived
 components:
   responses:
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
     InternalServerError:
       description: Internal Server Error
       content:
@@ -92,28 +112,8 @@ components:
                 description: A message explaining what went wrong
                 type: string
             type: object
-    NotFound:
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            properties:
-              message:
-                description: A message explaining what went wrong
-                type: string
-            type: object
     ValidationError:
       description: Validation Error
-      content:
-        application/json:
-          schema:
-            properties:
-              message:
-                description: A message explaining what went wrong
-                type: string
-            type: object
-    Forbidden:
-      description: Forbidden
       content:
         application/json:
           schema:

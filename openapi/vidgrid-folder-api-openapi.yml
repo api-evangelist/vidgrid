@@ -202,8 +202,28 @@ paths:
       x-operation-id-source: derived
 components:
   responses:
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
     NoContent:
       description: No Content
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    Forbidden:
+      description: Forbidden
       content:
         application/json:
           schema:
@@ -232,16 +252,6 @@ components:
                 description: A message explaining what went wrong
                 type: string
             type: object
-    NotFound:
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            properties:
-              message:
-                description: A message explaining what went wrong
-                type: string
-            type: object
     ValidationError:
       description: Validation Error
       content:
@@ -252,17 +262,22 @@ components:
                 description: A message explaining what went wrong
                 type: string
             type: object
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            properties:
-              message:
-                description: A message explaining what went wrong
-                type: string
-            type: object
   schemas:
+    FolderPlaylist:
+      description: Class ApiFolderPropertyPlaylistService
+      properties:
+        enabled:
+          description: Whether or not this folder is in the Organization Library.
+          type: boolean
+        view_url:
+          description: URL to view the playlist for this folder.
+          type: string
+          format: URL
+        embed_url:
+          description: URL to embed the playlist for this folder.
+          type: string
+          format: URL
+      type: object
     FolderResource:
       title: Folder Resource
       description: The Folder Resource(s) returned in a successful response.
@@ -287,21 +302,6 @@ components:
           format: URL
         playlist:
           $ref: '#/components/schemas/FolderPlaylist'
-      type: object
-    FolderPlaylist:
-      description: Class ApiFolderPropertyPlaylistService
-      properties:
-        enabled:
-          description: Whether or not this folder is in the Organization Library.
-          type: boolean
-        view_url:
-          description: URL to view the playlist for this folder.
-          type: string
-          format: URL
-        embed_url:
-          description: URL to embed the playlist for this folder.
-          type: string
-          format: URL
       type: object
   securitySchemes:
     bearer:

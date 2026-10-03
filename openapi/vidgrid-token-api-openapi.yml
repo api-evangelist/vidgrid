@@ -124,58 +124,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    DirectUploadTokenResource:
-      title: Direct Upload Token Resource
-      description: The Direct Upload Token Resource returned in a successful response.
-      required:
-      - token
-      - token_key
-      - expires
-      - uploader
-      properties:
-        token:
-          description: One-time token that is used for authentication when uploading a video. It is then mainly used for informational purposes.
-          type: string
-        token_key:
-          description: Public identifier corresponding to the token.
-          type: string
-        formAttributes:
-          description: Form attributes necessary for the S3 upload.
-          properties:
-            action:
-              type: string
-            method:
-              type: string
-            enctype:
-              type: string
-          type: object
-        formInputs:
-          description: 'Key/value pairs necessary for the S3 upload. <i>Important: **formInputs.key** contains a **${filename}** string that needs to be replaced with a unique file name for each file uploaded. This will also be used for the video title in VidGrid unless `video.title` is set in the Create Token request.</i>'
-          properties:
-            key:
-              type: string
-            acl:
-              type: string
-            x-amz-server-side-encryption:
-              type: string
-            X-Amz-Credential:
-              type: string
-            X-Amz-Algorithm:
-              type: string
-            X-Amz-Date:
-              type: string
-            X-Amz-Signature:
-              type: string
-            Policy:
-              type: string
-          type: object
-        fileParamName:
-          description: 'The required key name that should contain the file data for uploading. <i>Important: Amazon requires this to be the last key/value pair included in the POST to S3.</i>'
-          type: string
-        cloudUploadCallbackUrl:
-          description: 'URL to `POST` to once a video has finished uploading to S3 and is ready for processing. Returns a video identifier. <i>Important: you need to include `cloudKey` with the request which is the value of `formInputs.key` after **${filename}** has been replaced.</i>'
-          type: string
-      type: object
     RecordTokenResource:
       title: Record Token Resource
       description: The Record Token Resource returned in a successful response.
@@ -239,7 +187,79 @@ components:
               type: string
           type: object
       type: object
+    DirectUploadTokenResource:
+      title: Direct Upload Token Resource
+      description: The Direct Upload Token Resource returned in a successful response.
+      required:
+      - token
+      - token_key
+      - expires
+      - uploader
+      properties:
+        token:
+          description: One-time token that is used for authentication when uploading a video. It is then mainly used for informational purposes.
+          type: string
+        token_key:
+          description: Public identifier corresponding to the token.
+          type: string
+        formAttributes:
+          description: Form attributes necessary for the S3 upload.
+          properties:
+            action:
+              type: string
+            method:
+              type: string
+            enctype:
+              type: string
+          type: object
+        formInputs:
+          description: 'Key/value pairs necessary for the S3 upload. <i>Important: **formInputs.key** contains a **${filename}** string that needs to be replaced with a unique file name for each file uploaded. This will also be used for the video title in VidGrid unless `video.title` is set in the Create Token request.</i>'
+          properties:
+            key:
+              type: string
+            acl:
+              type: string
+            x-amz-server-side-encryption:
+              type: string
+            X-Amz-Credential:
+              type: string
+            X-Amz-Algorithm:
+              type: string
+            X-Amz-Date:
+              type: string
+            X-Amz-Signature:
+              type: string
+            Policy:
+              type: string
+          type: object
+        fileParamName:
+          description: 'The required key name that should contain the file data for uploading. <i>Important: Amazon requires this to be the last key/value pair included in the POST to S3.</i>'
+          type: string
+        cloudUploadCallbackUrl:
+          description: 'URL to `POST` to once a video has finished uploading to S3 and is ready for processing. Returns a video identifier. <i>Important: you need to include `cloudKey` with the request which is the value of `formInputs.key` after **${filename}** has been replaced.</i>'
+          type: string
+      type: object
   responses:
+    ValidationError:
+      description: Validation Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
     NotFound:
       description: Not Found
       content:
@@ -260,28 +280,8 @@ components:
                 description: A message explaining what went wrong
                 type: string
             type: object
-    InternalServerError:
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            properties:
-              message:
-                description: A message explaining what went wrong
-                type: string
-            type: object
     Unauthorized:
       description: Unauthorized
-      content:
-        application/json:
-          schema:
-            properties:
-              message:
-                description: A message explaining what went wrong
-                type: string
-            type: object
-    ValidationError:
-      description: Validation Error
       content:
         application/json:
           schema:

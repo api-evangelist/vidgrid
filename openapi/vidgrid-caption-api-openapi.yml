@@ -186,28 +186,8 @@ components:
           $ref: '#/components/schemas/CaptionTranscript'
       type: object
   responses:
-    NotFound:
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            properties:
-              message:
-                description: A message explaining what went wrong
-                type: string
-            type: object
-    NoContent:
-      description: No Content
-      content:
-        application/json:
-          schema:
-            properties:
-              message:
-                description: A message explaining what went wrong
-                type: string
-            type: object
-    Forbidden:
-      description: Forbidden
+    ValidationError:
+      description: Validation Error
       content:
         application/json:
           schema:
@@ -226,8 +206,8 @@ components:
                 description: A message explaining what went wrong
                 type: string
             type: object
-    Unauthorized:
-      description: Unauthorized
+    NotFound:
+      description: Not Found
       content:
         application/json:
           schema:
@@ -236,8 +216,28 @@ components:
                 description: A message explaining what went wrong
                 type: string
             type: object
-    ValidationError:
-      description: Validation Error
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    NoContent:
+      description: No Content
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    Unauthorized:
+      description: Unauthorized
       content:
         application/json:
           schema:

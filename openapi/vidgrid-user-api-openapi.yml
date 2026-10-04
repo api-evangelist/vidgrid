@@ -125,16 +125,6 @@ components:
                 description: A message explaining what went wrong
                 type: string
             type: object
-    NoContent:
-      description: No Content
-      content:
-        application/json:
-          schema:
-            properties:
-              message:
-                description: A message explaining what went wrong
-                type: string
-            type: object
     InternalServerError:
       description: Internal Server Error
       content:
@@ -145,8 +135,8 @@ components:
                 description: A message explaining what went wrong
                 type: string
             type: object
-    NotFound:
-      description: Not Found
+    Unauthorized:
+      description: Unauthorized
       content:
         application/json:
           schema:
@@ -165,8 +155,18 @@ components:
                 description: A message explaining what went wrong
                 type: string
             type: object
-    Unauthorized:
-      description: Unauthorized
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    NoContent:
+      description: No Content
       content:
         application/json:
           schema:

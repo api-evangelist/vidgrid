@@ -130,11 +130,64 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    VideoCaptions:
-      description: Caption Resources attached to this video.
-      type: array
-      items:
-        $ref: '#/components/schemas/CaptionResource'
+    VideoEvent:
+      description: A video event such as a play
+      required:
+      - type
+      - created_at
+      - payload
+      properties:
+        type:
+          description: The type of event
+          type: string
+        created_at:
+          description: The time this event happened
+          type: string
+        payload:
+          description: An array containing data for this event
+          type: array
+          items: {}
+        user_id:
+          description: The randtag identifier for the user that created this event
+          type: string
+      type: object
+    CaptionResource:
+      title: Caption Resource
+      description: The Caption Resource(s) returned in a successful response.
+      required:
+      - identifier
+      - type
+      - status
+      - video_identifier
+      - language
+      properties:
+        identifier:
+          description: The unique identifier for the caption on VidGrid.
+          type: string
+        language:
+          description: The language of the caption file.
+          type: string
+        status:
+          description: 'The current status of this caption resource. Possible values: `QUEUED`, `PENDING`, `IN_PROGRESS`, `CANCELED`, `FAILED`, `COMPLETED`'
+          type: string
+        type:
+          description: 'The type of caption resource. Possible values: `machine`, `professional`, `manual`, `machine_translation`'
+          type: string
+        video_identifier:
+          description: The unique identifier of the video this caption belongs to.
+          type: string
+        transcript:
+          $ref: '#/components/schemas/CaptionTranscript'
+      type: object
+    VideoSummary:
+      description: A summary of analytics on a video
+      required:
+      - plays
+      properties:
+        plays:
+          description: Grants view permissions
+          type: number
+      type: object
     VideoPcty:
       description: Pcty reference data
       properties:
@@ -164,30 +217,66 @@ components:
                 type: string
             type: object
       type: object
-    VideoEvent:
-      description: A video event such as a play
+    VideoSignedUrl:
+      description: Signed URL that can be used to view the video file directly. Expires after 6 hours.
+      type: string
+      format: URL
+    VideoJwts:
+      description: 'A single-use access token that can be used to grant permissions for a video on VidGrid. On page load a new access token will be generated that allows the user to access the video for 6 hours, but the token in the URL will have expired. You can use the token with view or embed URLs as follows: `{embed_url}?auth={jwts.token_type}`'
       required:
-      - type
-      - created_at
-      - payload
+      - view
+      - edit
       properties:
-        type:
-          description: The type of event
+        view:
+          description: Grants view permissions
           type: string
-        created_at:
-          description: The time this event happened
+        edit:
+          description: Grants edit permissions
           type: string
-        payload:
-          description: An array containing data for this event
-          type: array
-          items: {}
-        user_id:
-          description: The randtag identifier for the user that created this event
+        manage:
+          description: Grants manage permissions
           type: string
       type: object
-    CaptionTranscript:
-      description: Caption transcript in plain text.
+    VideoTokenKey:
+      description: Public identifier corresponding to the Token Resource used when creating a video through the API.
       type: string
+    VideoThumbnails:
+      description: Signed URLs that can be used to view video thumbnails.
+      properties:
+        signed_url:
+          description: Signed URL for the video thumbnail.
+          type: string
+          format: URL
+        signed_url_small:
+          description: Signed URL for a smaller version of the video thumbnail.
+          type: string
+          format: URL
+      type: object
+    VideoMetadata:
+      description: Metadata describing a video.
+      properties:
+        duration:
+          description: Duration of the video in seconds.
+          type: number
+          format: float
+        filesize:
+          description: Size of the video in bytes. Filesize may differ between videos uploaded and videos done processing.
+          type: integer
+        filetype:
+          description: File type of the video file.
+          type: string
+        height:
+          description: Height of the video. Height may differ between videos uploaded and videos done  processing.
+          type: integer
+        width:
+          description: 'Width of the video. Width may differ between videos uploaded and videos done processing. '
+          type: integer
+      type: object
+    VideoCaptions:
+      description: Caption Resources attached to this video.
+      type: array
+      items:
+        $ref: '#/components/schemas/CaptionResource'
     VideoResource:
       title: Video Resource
       description: The Video Resource(s) returned in a successful response.
@@ -236,98 +325,9 @@ components:
           items:
             $ref: '#/components/schemas/VideoEvent'
       type: object
-    VideoThumbnails:
-      description: Signed URLs that can be used to view video thumbnails.
-      properties:
-        signed_url:
-          description: Signed URL for the video thumbnail.
-          type: string
-          format: URL
-        signed_url_small:
-          description: Signed URL for a smaller version of the video thumbnail.
-          type: string
-          format: URL
-      type: object
-    VideoMetadata:
-      description: Metadata describing a video.
-      properties:
-        duration:
-          description: Duration of the video in seconds.
-          type: number
-          format: float
-        filesize:
-          description: Size of the video in bytes. Filesize may differ between videos uploaded and videos done processing.
-          type: integer
-        filetype:
-          description: File type of the video file.
-          type: string
-        height:
-          description: Height of the video. Height may differ between videos uploaded and videos done  processing.
-          type: integer
-        width:
-          description: 'Width of the video. Width may differ between videos uploaded and videos done processing. '
-          type: integer
-      type: object
-    CaptionResource:
-      title: Caption Resource
-      description: The Caption Resource(s) returned in a successful response.
-      required:
-      - identifier
-      - type
-      - status
-      - video_identifier
-      - language
-      properties:
-        identifier:
-          description: The unique identifier for the caption on VidGrid.
-          type: string
-        language:
-          description: The language of the caption file.
-          type: string
-        status:
-          description: 'The current status of this caption resource. Possible values: `QUEUED`, `PENDING`, `IN_PROGRESS`, `CANCELED`, `FAILED`, `COMPLETED`'
-          type: string
-        type:
-          description: 'The type of caption resource. Possible values: `machine`, `professional`, `manual`, `machine_translation`'
-          type: string
-        video_identifier:
-          description: The unique identifier of the video this caption belongs to.
-          type: string
-        transcript:
-          $ref: '#/components/schemas/CaptionTranscript'
-      type: object
-    VideoTokenKey:
-      description: Public identifier corresponding to the Token Resource used when creating a video through the API.
+    CaptionTranscript:
+      description: Caption transcript in plain text.
       type: string
-    VideoJwts:
-      description: 'A single-use access token that can be used to grant permissions for a video on VidGrid. On page load a new access token will be generated that allows the user to access the video for 6 hours, but the token in the URL will have expired. You can use the token with view or embed URLs as follows: `{embed_url}?auth={jwts.token_type}`'
-      required:
-      - view
-      - edit
-      properties:
-        view:
-          description: Grants view permissions
-          type: string
-        edit:
-          description: Grants edit permissions
-          type: string
-        manage:
-          description: Grants manage permissions
-          type: string
-      type: object
-    VideoSignedUrl:
-      description: Signed URL that can be used to view the video file directly. Expires after 6 hours.
-      type: string
-      format: URL
-    VideoSummary:
-      description: A summary of analytics on a video
-      required:
-      - plays
-      properties:
-        plays:
-          description: Grants view permissions
-          type: number
-      type: object
   responses:
     ValidationError:
       description: Validation Error
@@ -349,16 +349,6 @@ components:
                 description: A message explaining what went wrong
                 type: string
             type: object
-    NotFound:
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            properties:
-              message:
-                description: A message explaining what went wrong
-                type: string
-            type: object
     Forbidden:
       description: Forbidden
       content:
@@ -371,6 +361,16 @@ components:
             type: object
     Unauthorized:
       description: Unauthorized
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: A message explaining what went wrong
+                type: string
+            type: object
+    NotFound:
+      description: Not Found
       content:
         application/json:
           schema:

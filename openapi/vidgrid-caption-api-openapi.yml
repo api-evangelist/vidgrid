@@ -154,9 +154,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    CaptionTranscript:
-      description: Caption transcript in plain text.
-      type: string
     CaptionResource:
       title: Caption Resource
       description: The Caption Resource(s) returned in a successful response.
@@ -185,6 +182,9 @@ components:
         transcript:
           $ref: '#/components/schemas/CaptionTranscript'
       type: object
+    CaptionTranscript:
+      description: Caption transcript in plain text.
+      type: string
   responses:
     ValidationError:
       description: Validation Error
@@ -206,8 +206,8 @@ components:
                 description: A message explaining what went wrong
                 type: string
             type: object
-    NotFound:
-      description: Not Found
+    Unauthorized:
+      description: Unauthorized
       content:
         application/json:
           schema:
@@ -226,8 +226,8 @@ components:
                 description: A message explaining what went wrong
                 type: string
             type: object
-    NoContent:
-      description: No Content
+    NotFound:
+      description: Not Found
       content:
         application/json:
           schema:
@@ -236,8 +236,8 @@ components:
                 description: A message explaining what went wrong
                 type: string
             type: object
-    Unauthorized:
-      description: Unauthorized
+    NoContent:
+      description: No Content
       content:
         application/json:
           schema:

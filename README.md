@@ -64,6 +64,137 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-VidGrid is a company surfaced as a portfolio company of techstars and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+VidGrid is an enterprise video platform for recording, hosting, captioning, and sharing interactive video, acquired by Paylocity and now branded VidGrid by Paylocity. Its Content Management API v2 is a JSON REST API for managing videos, captions, folders, users, and search on an account, plus record/upload tokens that launch the embeddable screen recorder and uploader, with webhook events for video and caption processing. API keys are Enterprise-restricted after a 14-day trial.
 
-Backed by: techstars — https://vidgrid.com/
+**Areas:** Video · Screen Recording · Captions · Video Hosting · Webhook · Training · Human Resources
+
+## VidGrid on APIs.io
+
+Everything profiled for VidGrid is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/vidgrid/](https://apis.io/providers/vidgrid/)** — or go straight to one of the APIs or properties below.
+
+### APIs (7)
+
+- [VidGrid Caption API](https://apis.io/apis/vidgrid/vidgrid-caption-api/) — The Caption API allows you to request and manage closed captioning on your Videos.
+- [VidGrid Folder API](https://apis.io/apis/vidgrid/vidgrid-folder-api/) — The Folder API allows you to interact with folders on your VidGrid account.
+- [VidGrid Search API](https://apis.io/apis/vidgrid/vidgrid-search-api/) — The Search API allows you to search for videos.
+- [VidGrid Token API](https://apis.io/apis/vidgrid/vidgrid-token-api/) — The Video Creation Token API allows you to request a token that can be used to record or upload videos into your VidGrid account.
+- [VidGrid User API](https://apis.io/apis/vidgrid/vidgrid-user-api/) — The User API allows you to interact with users on your VidGrid account.
+- [VidGrid Video API](https://apis.io/apis/vidgrid/vidgrid-video-api/) — The Video API allows you to interact with videos on your VidGrid account.
+- [VidGrid Webhooks API](https://apis.io/apis/vidgrid/vidgrid-webhooks-api/) — The Webhook API allows you to trigger webhook events.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Vidgrid Webhooks](https://apis.io/asyncapis/vidgrid/vidgrid-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [vidgrid](https://apis.io/servers/vidgrid/vidgrid/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Vidgrid Agentic Access](https://apis.io/agentic-access/vidgrid/vidgrid-agentic-access/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [VidGrid API Reference Caption API](https://apis.io/collections/vidgrid/open-vidgrid-caption-api/)
+- [VidGrid API Reference Caption Folder API](https://apis.io/collections/vidgrid/open-vidgrid-folder-api/)
+- [VidGrid API Reference Caption Search API](https://apis.io/collections/vidgrid/open-vidgrid-search-api/)
+- [VidGrid API Reference Caption Token API](https://apis.io/collections/vidgrid/open-vidgrid-token-api/)
+- [VidGrid API Reference Caption User API](https://apis.io/collections/vidgrid/open-vidgrid-user-api/)
+- [VidGrid API Reference Caption Video API](https://apis.io/collections/vidgrid/open-vidgrid-video-api/)
+- [VidGrid API Reference Caption Webhooks API](https://apis.io/collections/vidgrid/open-vidgrid-webhooks-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Vidgrid Content Management Overlay](https://apis.io/overlays/vidgrid/vidgrid-content-management-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Vidgrid Authentication](https://apis.io/security/vidgrid/vidgrid-authentication/)
+- [Vidgrid Domain Security](https://apis.io/security/vidgrid/vidgrid-domain-security/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Vidgrid Rate Limits](https://apis.io/rate-limits/vidgrid/vidgrid-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://vidgrid.com/)
+- [Documentation](https://developer.vidgrid.com/docs/v2/)
+- [Getting started](https://help.vidgrid.com/en/articles/2554249-api-docs-for-developers)
+- [API reference](https://developer.vidgrid.com/docs/v2/)
+- [Support](https://help.vidgrid.com/)
+- [GitHub](https://github.com/ilosvideos)
+
+## API Evangelist rating
+
+**Kin Score 38.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 60.6 |
+| Contract governance | 4.5 |
+| Operational transparency | 31.6 |
+| Developer ergonomics | 56.5 |
+| Access clarity | 6.6 |
+
+**Agent readiness 25.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Employment & Payroll
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/vidgrid/](https://apis.io/providers/vidgrid/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for VidGrid: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/vidgrid/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
